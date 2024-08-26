@@ -1,0 +1,5 @@
+<div class="lesson-bar">
+  <div *ngFor="let lesson of lessons" (click)="onSelectLesson(lesson)" class="lesson-item">
+    Lesson {{ lesson.number }} - {{ lesson.date | date:'shortDate' }}
+  </div>
+</div>

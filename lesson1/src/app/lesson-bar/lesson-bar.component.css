@@ -1,0 +1,22 @@
+/* Dark theme for lesson bar */
+.lesson-bar {
+  display: flex;
+  overflow-x: auto;
+  background-color: var(--primary-color);
+  padding: 10px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.lesson-item {
+  cursor: pointer;
+  margin-right: 20px;
+  padding: 10px;
+  background-color: var(--button-bg);
+  color: var(--text-color);
+  border-radius: 5px;
+  text-align: center;
+}
+
+.lesson-item:hover {
+  background-color: var(--button-hover-bg);
+}

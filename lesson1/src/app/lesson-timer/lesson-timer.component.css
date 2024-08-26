@@ -1,0 +1,11 @@
+/* Dark theme for timer component */
+.timer {
+  font-size: 1.5em;
+  color: #ff0000;
+  text-align: center;
+  margin: 20px 0;
+  background-color: var(--primary-color);
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
