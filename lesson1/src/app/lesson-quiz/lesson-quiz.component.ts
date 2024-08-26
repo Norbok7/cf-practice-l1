@@ -6,7 +6,7 @@ import { LessonTimerComponent } from '../lesson-timer/lesson-timer.component';
 @Component({
   selector: 'app-lesson-quiz',
   standalone: true,
-  imports: [CommonModule, FormsModule, LessonTimerComponent],
+  imports: [CommonModule, FormsModule, LessonTimerComponent,],
   templateUrl: './lesson-quiz.component.html',
   styleUrl: './lesson-quiz.component.css'
 })
