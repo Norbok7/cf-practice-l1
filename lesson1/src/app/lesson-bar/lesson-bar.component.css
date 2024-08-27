@@ -1,22 +1,51 @@
 /* Dark theme for lesson bar */
 .lesson-bar {
   display: flex;
-  overflow-x: auto;
-  background-color: var(--primary-color);
+  flex-wrap: wrap;
+  background-color: var(--primary-color); /* Example: #333 */
   padding: 10px;
-  border-bottom: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color); /* Example: #444 */
+}
+
+.topic-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 10px; /* Space between topics */
+  flex: 1 1 200px; /* Allow topics to grow and shrink */
+}
+
+.topic-title {
+  cursor: pointer;
+  padding: 10px;
+  background-color: var(--button-bg); /* Example: #555 */
+  color: var(--text-color); /* Example: #fff */
+  border-radius: 5px;
+  text-align: left;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.topic-title:hover {
+  background-color: var(--button-hover-bg); /* Example: #666 */
+}
+
+.lesson-list {
+  margin-top: 5px;
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
 }
 
 .lesson-item {
   cursor: pointer;
-  margin-right: 20px;
-  padding: 10px;
-  background-color: var(--button-bg);
-  color: var(--text-color);
+  margin-top: 5px;
+  padding: 5px;
+  background-color: var(--lesson-bg); /* Example: #444 */
+  color: var(--text-color); /* Example: #fff */
   border-radius: 5px;
-  text-align: center;
+  transition: background-color 0.3s;
 }
 
 .lesson-item:hover {
-  background-color: var(--button-hover-bg);
+  background-color: var(--lesson-hover-bg); /* Example: #555 */
 }

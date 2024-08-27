@@ -1,5 +1,12 @@
 <div class="lesson-bar">
-  <div *ngFor="let lesson of lessons" (click)="onSelectLesson(lesson)" class="lesson-item">
-    Lesson {{ lesson.number }} - {{ lesson.date | date:'shortDate' }}
+  <div *ngFor="let topic of topics" class="topic-container">
+    <div class="topic-title" (click)="toggleLessons(topic)">
+      {{ topic.title }}
+    </div>
+    <div *ngIf="topic.expanded" class="lesson-list">
+      <div *ngFor="let lesson of topic.lessons" (click)="onSelectLesson(lesson)" class="lesson-item">
+        {{ lesson }}
+      </div>
+    </div>
   </div>
 </div>
