@@ -1,14 +1,4 @@
 <div class="quiz-container">
-  <!-- Section Selector -->
-  <div class="section-selector">
-    <h3>Select Quiz</h3>
-    <select (change)="changeSection($event)">
-      <option *ngFor="let section of sections; let i = index" [value]="i">
-        {{ section.title }}
-      </option>
-    </select>
-  </div>
-
   <!-- Navigation Box -->
   <div class="navigation-box">
     <h3>Question Navigation</h3>
@@ -23,14 +13,14 @@
 
   <!-- Main Quiz -->
   <div class="quiz">
-    <div *ngIf="currentQuestionIndex < getCurrentSection().questions.length">
+    <div *ngIf="currentQuestionIndex < questions.length">
       <app-lesson-timer [timeLimit]="30"></app-lesson-timer>
       <h2>Question {{ currentQuestionIndex + 1 }}</h2>
-      <p>{{ getCurrentSection().questions[currentQuestionIndex].question }}</p>
+      <p>{{ questions[currentQuestionIndex].question }}</p>
 
       <!-- Multiple-choice questions -->
-      <div *ngIf="getCurrentSection().questions[currentQuestionIndex].options.length > 0">
-        <div *ngFor="let option of getCurrentSection().questions[currentQuestionIndex].options">
+      <div *ngIf="questions[currentQuestionIndex].options.length > 0">
+        <div *ngFor="let option of questions[currentQuestionIndex].options">
           <label>
             <input type="radio" name="options" [(ngModel)]="selectedOption" [value]="option">
             {{ option }}
@@ -39,7 +29,7 @@
       </div>
 
       <!-- True/False questions -->
-      <div *ngIf="getCurrentSection().questions[currentQuestionIndex].options.length === 0">
+      <div *ngIf="questions[currentQuestionIndex].options.length === 0">
         <label>
           <input type="radio" name="options" [(ngModel)]="selectedOption" value="True">
           True
@@ -56,8 +46,8 @@
 
     <div *ngIf="showReview">
       <h2>Review Your Answers</h2>
-      <p>Total Questions: {{ getCurrentSection().questions.length }}</p>
-      <p>Correct Answers: {{ correctCount }} / {{ getCurrentSection().questions.length }} ({{ correctPercentage }}%)</p>
+      <p>Total Questions: {{ questions.length }}</p>
+      <p>Correct Answers: {{ correctCount }} / {{ questions.length }} ({{ correctPercentage }}%)</p>
       <ul>
         <li *ngFor="let result of results" [ngClass]="{'correct': result.isCorrect, 'incorrect': !result.isCorrect}">
           <p>Question {{ result.index + 1 }}: {{ result.question }}</p>
