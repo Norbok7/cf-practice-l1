@@ -51,3 +51,29 @@
 .lesson-item:hover {
   background-color: var(--lesson-hover-bg); /* Example: #555 */
 }
+/* Style for the master button */
+.close-all-button {
+  cursor: pointer;
+  padding: 5px 10px;
+  background-color: var(--button-bg); /* Example: #555 */
+  color: var(--text-color); /* Example: #fff */
+  border: none;
+  border-radius: 5px;
+  margin-top: 10px; /* Space above the button */
+  font-weight: bold;
+  transition: background-color 0.3s;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Subtle shadow for depth */
+  align-self: center; /* Center the button horizontally */
+  display: block; /* Ensure the button is block level */
+}
+
+.close-all-button:hover {
+  background-color: var(--button-hover-bg); /* Example: #666 */
+}
+
+@media (max-width: 480px) {
+  .topic-title {
+    font-size: 10px; /* Adjust font size for smaller screens */
+    padding: 0 3px; /* Adjust horizontal padding */
+  }
+}

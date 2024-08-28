@@ -115,5 +115,14 @@ export class LessonBarComponent {
     console.log('Selected Lesson:', lesson);
     // Implement further logic, such as routing to the detailed view of the lesson
   }
-}
 
+  // Function to close all dropdowns
+  closeAllLessons() {
+    this.topics.forEach(topic => topic.expanded = false);
+  }
+
+   // Function to check if any dropdown is expanded
+   isAnyDropdownExpanded() {
+    return this.topics.some(topic => topic.expanded);
+  }
+}

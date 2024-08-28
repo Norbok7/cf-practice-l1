@@ -7,6 +7,8 @@
       <div *ngFor="let lesson of topic.lessons" (click)="onSelectLesson(lesson)" class="lesson-item">
         {{ lesson }}
       </div>
+      <!-- Master button to close all dropdowns -->
+      <button *ngIf="isAnyDropdownExpanded()" class="close-all-button" (click)="closeAllLessons()">Close All</button>
     </div>
   </div>
 </div>
