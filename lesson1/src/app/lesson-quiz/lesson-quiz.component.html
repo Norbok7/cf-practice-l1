@@ -1,28 +1,53 @@
 <div class="quiz-container">
-  <!-- Section Selector -->
-  <div class="section-selector">
-    <h3>Select Quiz</h3>
-    <select (change)="changeSection($event)">
-      <option *ngFor="let section of sections; let i = index" [value]="i">
-        {{ section.title }}
-      </option>
-    </select>
-  </div>
+  <!-- Section Selector Box -->
+  <div class="section-selector-box">
+    <div class="section-selector">
+      <h3>Select Quiz</h3>
 
-  <!-- Navigation Box -->
-  <div class="navigation-box">
-    <h3>Question Navigation</h3>
-    <div class="question-numbers">
-      <div *ngFor="let number of questionNumbers"
-           [ngClass]="{'answered': isAnswered(number), 'not-answered': !isAnswered(number)}"
-           (click)="navigateToQuestion(number)">
-        {{ number }}
+      <!-- Basics Dropdown -->
+      <div class="dropdown">
+        <label for="basics-select">Basics:</label>
+        <select id="basics-select" (change)="changeSection($event)">
+          <option value="0">HTML/CSS/Dev Tools</option>
+          <option value="1">Intermediate CSS with Responsive Design</option>
+          <option value="2">GitHub Version Control</option>
+        </select>
+      </div>
+
+      <!-- JavaScript Dropdown -->
+      <div class="dropdown">
+        <label for="javascript-select">JavaScript:</label>
+        <select id="javascript-select" (change)="changeSection($event)">
+          <option value="0">JavaScript Data Types & Variables</option>
+        </select>
+      </div>
+
+      <!-- Angular & TypeScript Dropdown -->
+      <div class="dropdown">
+        <label for="angular-select">Angular & TypeScript:</label>
+        <select id="angular-select" (change)="changeSection($event)">
+          <option value="0">Angular Getting Started</option>
+          <option value="1">Angular Project Basics</option>
+          <option value="2">Angular Components</option>
+          <option value="3">Angular Directives</option>
+          <option value="4">Angular Routing</option>
+          <option value="5">Angular Forms</option>
+          <option value="6">Angular HTTP</option>
+          <option value="7">Angular Authentication</option>
+          <option value="8">Angular Dynamic Components</option>
+          <option value="9">Angular Animations</option>
+          <option value="10">Angular Unit Testing</option>
+          <option value="11">TypeScript Introduction</option>
+        </select>
       </div>
     </div>
   </div>
 
-  <!-- Main Quiz -->
-  <div class="quiz">
+
+
+  <!-- Main Quiz Section -->
+  <div class="quiz-section">
+    <!-- Display current question -->
     <div *ngIf="currentQuestionIndex < getCurrentSection().questions.length">
       <app-lesson-timer [timeLimit]="30"></app-lesson-timer>
       <h2>Question {{ currentQuestionIndex + 1 }}</h2>
@@ -54,6 +79,7 @@
       <p>{{ feedback }}</p>
     </div>
 
+    <!-- Review Section -->
     <div *ngIf="showReview">
       <h2>Review Your Answers</h2>
       <p>Total Questions: {{ getCurrentSection().questions.length }}</p>
@@ -67,5 +93,17 @@
         </li>
       </ul>
     </div>
+
   </div>
+    <!-- Navigation Box -->
+    <div class="navigation-box">
+      <h3>Question Navigation</h3>
+      <div class="question-numbers">
+        <div *ngFor="let number of questionNumbers"
+             [ngClass]="{'answered': isAnswered(number), 'not-answered': !isAnswered(number)}"
+             (click)="navigateToQuestion(number)">
+          {{ number }}
+        </div>
+      </div>
+    </div>
 </div>

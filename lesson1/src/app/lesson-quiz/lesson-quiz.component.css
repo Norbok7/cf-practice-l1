@@ -1,24 +1,63 @@
+:root {
+  --primary-color: #1a1a1a; /* Dark background color */
+  --secondary-color: #2a2a2a; /* Slightly lighter background color */
+  --text-color: #ffffff; /* White text color */
+  --border-color: #444; /* Border color for elements */
+  --button-bg: #333; /* Button background color */
+  --button-hover-bg: #555; /* Button background hover color */
+}
+
 /* Dark theme for quiz container */
 .quiz-container {
-  display: flex;
-  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr; /* 3 columns: selector, quiz, navigation */
+  gap: 20px; /* Space between columns */
   background-color: var(--primary-color);
   color: var(--text-color);
   border: 1px solid var(--border-color);
   border-radius: 8px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* Section selector box styles */
+.section-selector-box {
+  background-color: var(--secondary-color);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-color);
+}
+
+.section-selector h3 {
+  margin-top: 0;
+  color: var(--text-color);
+}
+
+.dropdown label {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--text-color);
+}
+
+.dropdown select {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--primary-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  margin-bottom: 15px;
 }
 
 /* Navigation box styles */
 .navigation-box {
-  position: absolute;
-  top: 20px;
-  right: 15%;
-  width: 200px;
-  color: white;
   background-color: var(--secondary-color);
-  padding: 10px;
+  padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-color);
 }
 
 .navigation-box h3 {
@@ -53,33 +92,32 @@
 }
 
 /* Dark theme for quiz section */
-.quiz {
-  max-width: 800px;
-  margin: auto;
-  padding: 20px;
-  background-color: var(--secondary-color); /* Slightly lighter than the primary color */
+.quiz-section {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
   border-radius: 8px;
+  padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
   border: 1px solid var(--border-color);
 }
 
-.quiz h2 {
+.quiz-section h2 {
   font-size: 1.5em;
   margin-bottom: 10px;
   color: var(--text-color);
 }
 
-.quiz p {
+.quiz-section p {
   font-size: 1.2em;
   color: var(--text-color);
 }
 
-.quiz label {
+.quiz-section label {
   display: block;
   margin: 10px 0;
 }
 
-.quiz button {
+.quiz-section button {
   background-color: var(--button-bg);
   color: var(--text-color);
   border: none;
@@ -90,9 +128,10 @@
   transition: background-color 0.3s;
 }
 
-.quiz button:hover {
+.quiz-section button:hover {
   background-color: var(--button-hover-bg);
 }
+
 .correct {
   color: #4caf50;
 }
@@ -110,4 +149,3 @@ li {
   margin-bottom: 15px;
   color: var(--text-color);
 }
-

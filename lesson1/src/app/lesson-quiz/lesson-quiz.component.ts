@@ -136,6 +136,7 @@ export class LessonQuizComponent {
   private updateQuestionNumbers() {
     this.questionNumbers = Array.from({ length: this.getCurrentSection().questions.length }, (_, i) => i + 1);
   }
+
   changeSection(event: Event) {
     const target = event.target as HTMLSelectElement;
     const sectionIndex = parseInt(target.value, 10);
