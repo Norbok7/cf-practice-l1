@@ -1,4 +1,12 @@
+<h1 style="text-align: center;">Quiz Topics</h1>
 <div class="lesson-bar">
+
+  <br>
+  <!-- Title for Quiz Topics -->
+  <div class="quiz-topic-title">
+  </div>
+
+  <!-- List of Topics -->
   <div *ngFor="let topic of topics" class="topic-container">
     <div class="topic-title" (click)="toggleLessons(topic)">
       {{ topic.title }}

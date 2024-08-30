@@ -19,10 +19,10 @@
   height: 40px;
   cursor: pointer;
   padding: 10px;
-  background-color: var(--button-bg); /* Example: #555 */
+  background: linear-gradient(115deg, #14532d, #15803d 73%, #166534); /* Updated with gradient */
   color: var(--text-color); /* Example: #fff */
   border-radius: 5px;
-  text-align: left;
+  text-align: center;
   font-weight: bold;
   transition: background-color 0.3s;
 }

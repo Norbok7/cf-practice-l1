@@ -12,73 +12,38 @@ import { RouterModule } from '@angular/router';
 export class LessonBarComponent {
   topics = [
     {
-      title: 'Introduction & Basics',
+      title: 'Basics',
       lessons: [
-        'Class Introduction',
-        'Basic HTML & CSS',
-        'Dev Tools'
+        'HTML/CSS + Dev Tools',
+        'Intermediate CSS with Responsive Design',
+        'GitHub Version Control'
       ],
       expanded: false
     },
     {
-      title: 'Intermediate CSS & Responsive Design',
+      title: 'JavaScript',
       lessons: [
-        'Advanced CSS Techniques',
-        'Responsive Design Concepts'
+        'JavaScript: Data Types & Variables, Operators, Comparisons, Conditionals, Flows, Loops',
+        'JavaScript: Functions, Objects, Built-in Objects',
+        'JavaScript: Scope, Hoisting, JavaScript vs EcmaScript',
+        'JavaScript Intermediate Concepts',
+        'JavaScript Advanced Concepts',
+        'JavaScript: Building Real Things',
+        'JavaScript: Bookmarking App'
       ],
       expanded: false
     },
     {
-      title: 'JavaScript Foundations',
+      title: 'Angular & TypeScript',
       lessons: [
-        'JavaScript: Getting Started',
-        'Data Types & Variables',
-        'Operators, Comparisons, Conditionals',
-        'Flows & Loops'
-      ],
-      expanded: false
-    },
-    {
-      title: 'JavaScript Essential & Advanced Concepts',
-      lessons: [
-        'Functions & Objects',
-        'Built-in Objects',
-        'Scope & Hoisting',
-        'JavaScript vs ECMAScript'
-      ],
-      expanded: false
-    },
-    {
-      title: 'TypeScript Basics',
-      lessons: [
-        'TypeScript: Introduction'
-      ],
-      expanded: false
-    },
-    {
-      title: 'Angular Essentials',
-      lessons: [
+        'TypeScript: Introduction',
         'Angular: Completing Getting Started',
-        'Angular: Course Project - The Basics',
-        'Angular: Debugging'
-      ],
-      expanded: false
-    },
-    {
-      title: 'Angular Deep Dive',
-      lessons: [
-        'Angular: Components & Databinding Deep Dive',
-        'Angular: Directives Deep Dive',
-        'Angular: Changing Pages with Routing',
-        'Angular: Course Project - Routing & Observables',
-        'Angular: Handling Forms in Angular Apps'
-      ],
-      expanded: false
-    },
-    {
-      title: 'Angular Advanced Topics',
-      lessons: [
-        'Angular: Making HTTP Requests',
+        'Angular: The Basics, Debugging',
+        'Angular: Components & Databinding deep dive',
+        'Angular: Directives deep dive',
+        'Angular: Routing & Observables',
+        'Angular: Handling forms in Angular apps',
+        'Angular: Making HTTP requests',
         'Angular: Authentication & Route Protection',
         'Angular: Dynamic Components, Modules & Optimizations',
         'Angular: Animations, Service Workers & Deployment',
@@ -86,23 +51,6 @@ export class LessonBarComponent {
       ],
       expanded: false
     },
-    {
-      title: 'Testing and Deployment',
-      lessons: [
-        'Angular: Review Day 3',
-        'GitHub, Version Control & Project Management'
-      ],
-      expanded: false
-    },
-    {
-      title: 'Project-Based Learning',
-      lessons: [
-        'Frontend Group Project',
-        'JavaScript: Building Real Things',
-        'JavaScript: Bookmarking App'
-      ],
-      expanded: false
-    }
   ];
 
   // Function to handle lesson group toggle
