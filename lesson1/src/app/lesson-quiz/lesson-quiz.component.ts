@@ -77,6 +77,7 @@ export class LessonQuizComponent {
   previousScores: any[] = [];
   questionNumbers: number[] = Array.from({ length: 25 }, (_, i) => i + 1); // Assuming 25 questions
   answers = {}; // Object to store answers, e.g., {1: 'True', 2: 'False'}
+  selectedQuizTitle: string = '';
 
   constructor() {
     this.previousScores = JSON.parse(localStorage.getItem('previousScores') || '[]');
@@ -101,6 +102,8 @@ export class LessonQuizComponent {
 
     // Update the question navigation numbers
     this.questionNumbers = Array.from({ length: this.totalQuestions }, (_, i) => i + 1);
+    this.selectedQuizTitle = this.getCurrentSection().title;
+
   }
 
   submitAnswer() {
