@@ -89,10 +89,18 @@ export class LessonQuizComponent {
 
   changeSection(event: any) {
     this.currentSectionIndex = parseInt(event.target.value, 10);
-    this.currentQuestionIndex = 0;
-    this.selectedOption = null;
-    this.feedback = '';
-    this.showReview = false;
+    this.currentQuestionIndex = 0;  // Reset to the first question
+    this.selectedOption = null;     // Clear any previously selected option
+    this.feedback = '';             // Clear feedback message
+    this.showReview = false;        // Hide review mode
+
+    // Reset the question navigation states
+    this.results = [];              // Clear previous results if needed
+    this.correctCount = 0;          // Reset correct answers count
+    this.totalQuestions = this.getCurrentSection().questions.length; // Update total questions
+
+    // Update the question navigation numbers
+    this.questionNumbers = Array.from({ length: this.totalQuestions }, (_, i) => i + 1);
   }
 
   submitAnswer() {
@@ -142,7 +150,7 @@ export class LessonQuizComponent {
     const result = this.results.find(result => result.index + 1 === questionNumber);
     return result ? result.selectedOption === result.correctAnswer : false;
   }
-  
+
   navigateToQuestion(questionNumber: number) {
     this.currentQuestionIndex = questionNumber - 1;
   }

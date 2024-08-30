@@ -101,16 +101,18 @@
       </div>
 
 
-   <!-- Display Previous Scores -->
-   <div class="previous-scores">
-    <h3>Previous Scores</h3>
-    <ul>
-      <li *ngFor="let score of previousScores">
-        <strong>Score:</strong> {{ (score.correctCount / score.totalQuestions * 100) | number: '1.0-2' }}%<br>
-        <strong>Date:</strong> {{ score.date | date: 'short' }}
-      </li>
-    </ul>
-  </div>
+ <!-- Display Previous Scores -->
+<div class="previous-scores">
+  <h3>Previous Scores</h3>
+  <ul>
+    <li *ngFor="let score of previousScores | slice:-5">
+      <strong>Section:</strong> {{ score.sectionTitle }}<br>
+      <strong>Score:</strong> {{ (score.correctCount / score.totalQuestions * 100) | number: '1.0-2' }}%<br>
+      <strong>Date:</strong> {{ score.date | date: 'short' }}
+    </li>
+  </ul>
+</div>
+
   </div>
 
   </div>
