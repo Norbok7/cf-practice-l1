@@ -28,6 +28,8 @@ import { BASIC_HTML_CSS_DEV_TOOLS } from '../quiz-questions/BASICS HTML/CSS/DEV 
 import { GITHUB_VERSION_CONTROL_QUESTIONS } from '../quiz-questions/BASICS HTML/CSS/DEV TOOLS/GITHUB/github-version-control-questions';
 import { INTERMEDIATE_CSS_WITH_RESPONSIVE_DESIGN_QUESTIONS } from '../quiz-questions/BASICS HTML/CSS/DEV TOOLS/GITHUB/intermediate-css-with-responsive-design';
 import { JAVASCRIPT_ESSENTIAL_CONCEPTS_SCOPE_HOISTING_JAVASCRIPTVSECMASCRIPT_QUESTIONS } from '../quiz-questions/JAVASCRIPT/javascript-essential-concepts-scope-hoisting-javascriptsvsecmascript';
+import { ANGULAR_FORMS_AND_PIPES_QUESTIONS } from '../quiz-questions/ANGULAR/angular-forms-and-pipes-questions';
+import { ANGULAR_ASYNCHRONOUS_CONCEPTS_QUESTIONS } from '../quiz-questions/ANGULAR/angular-asynchronous_concepts_questions';
 
 @Component({
   selector: 'app-lesson-quiz',
@@ -56,7 +58,9 @@ export class LessonQuizComponent {
     { title: 'Angular: Components & Databinding deep dive', questions: ANGULAR_COMPONENTS_QUESTIONS },
     { title: 'Angular: Directives deep dive', questions: ANGULAR_DIRECTIVES_QUESTIONS },
     { title: 'Angular: Routing & Observables', questions: ANGULAR_ROUTING_QUESTIONS },
+    { title: 'Angular: Asynchronous Concepts', questions: ANGULAR_ASYNCHRONOUS_CONCEPTS_QUESTIONS },
     { title: 'Angular: Handling forms in Angular apps', questions: ANGULAR_FORMS_QUESTIONS },
+    { title: 'Angular: Forms & Pipes', questions: ANGULAR_FORMS_AND_PIPES_QUESTIONS },
     { title: 'Angular: Making HTTP requests', questions: ANGULAR_HTTP_QUESTIONS },
     { title: 'Angular: Authentication & Route Protection', questions: ANGULAR_AUTHENTICATION_QUESTIONS },
     { title: 'Angular: Dynamic Components, Modules & Optimizations', questions: ANGULAR_DYNAMIC_COMPONENTS_QUESTIONS },

@@ -42,6 +42,8 @@ export class LessonBarComponent {
         'Angular: Components & Databinding deep dive',
         'Angular: Directives deep dive',
         'Angular: Routing & Observables',
+        'Angular: Forms & Pipes',
+        'Angular: Asynchronous Concepts',
         'Angular: Handling forms in Angular apps',
         'Angular: Making HTTP requests',
         'Angular: Authentication & Route Protection',
