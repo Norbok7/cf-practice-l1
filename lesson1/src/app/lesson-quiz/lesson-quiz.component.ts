@@ -85,7 +85,10 @@ export class LessonQuizComponent {
     this.quizresultService.results$.subscribe(results => this.results = results);
     this.quizresultService.correctCount$.subscribe(count => this.correctCount = count);
     this.quizresultService.totalQuestions$.subscribe(count => this.totalQuestions = count);
-    this.quizresultService.previousScores$.subscribe(scores => this.previousScores = scores);
+    this.quizresultService.previousScores$.subscribe(scores => {
+      console.log('Previous scores updated:', scores); // Debugging
+      this.previousScores = scores;
+    });
   }
 
   updateQuestionNumbers() {
