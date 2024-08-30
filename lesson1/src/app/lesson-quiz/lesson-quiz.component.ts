@@ -81,6 +81,7 @@ export class LessonQuizComponent {
     this.previousScores = JSON.parse(localStorage.getItem('previousScores') || '[]');
   }
 
+
   getCurrentSection() {
     return this.sections[this.currentSectionIndex];
   }
