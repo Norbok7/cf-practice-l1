@@ -109,9 +109,9 @@
   <h3>Previous Scores</h3>
   <ul>
     <li *ngFor="let score of previousScores | slice:-3">
-      <strong>Section:</strong> {{ score.sectionTitle }}<br>
-      <strong>Score:</strong> {{ (score.correctCount / score.totalQuestions * 100) | number: '1.0-2' }}%<br>
-      <strong>Date:</strong> {{ score.date | date: 'short' }}
+      <strong style="color: rgb(65, 154, 47);">Quiz</strong> {{ score.sectionTitle }}<br>
+      <strong style="color: rgb(65, 154, 47);">Score:</strong> {{ (score.correctCount / score.totalQuestions * 100) | number: '1.0-2' }}%<br>
+      <strong style="color: rgb(65, 154, 47);">Date:</strong> {{ score.date | date: 'short' }}
     </li>
   </ul>
 </div>
