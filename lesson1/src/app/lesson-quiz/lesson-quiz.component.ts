@@ -3,7 +3,7 @@ import { Component, NgModule, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { LessonTimerComponent } from '../lesson-timer/lesson-timer.component';
 import { Question } from './quiz-questions.model'; // Ensure the path is correct
-
+import { QuizresultService } from '../quizresult.service';
 // Importing questions from different files
 import { JAVASCRIPT_DATA_TYPES_VARIABLES_OPERATORS_COMPARISONS_CONDITIONALS_FLOWS_LOOPS } from '../quiz-questions/JAVASCRIPT/javascript-data-types-variables-operators-comparisons-conditionals-flows-loops-questions';
 import { TYPESCRIPT_INTRODUCTION_QUESTIONS } from '../quiz-questions/ANGULAR/typescript-introduction-questions';
@@ -32,18 +32,16 @@ import { JAVASCRIPT_ESSENTIAL_CONCEPTS_SCOPE_HOISTING_JAVASCRIPTVSECMASCRIPT_QUE
 @Component({
   selector: 'app-lesson-quiz',
   standalone: true,
-  imports: [CommonModule, FormsModule, LessonTimerComponent],
+  imports: [CommonModule, FormsModule, LessonTimerComponent, ],
   templateUrl: './lesson-quiz.component.html',
   styleUrls: ['./lesson-quiz.component.css']
 })
 export class LessonQuizComponent {
+
+
   // Defining quiz sections with categorized questions
   sections: { title: string; questions: Question[] }[] = [
-    { title: 'HTML/CSS + Dev Tools', questions: [
-        ...BASIC_HTML_CSS_DEV_TOOLS,
-        ...GITHUB_VERSION_CONTROL_QUESTIONS,
-        ...INTERMEDIATE_CSS_WITH_RESPONSIVE_DESIGN_QUESTIONS
-    ]},
+    { title: 'HTML/CSS + Dev Tools', questions: BASIC_HTML_CSS_DEV_TOOLS,},
     { title: 'Intermediate CSS with Responsive Design', questions: INTERMEDIATE_CSS_WITH_RESPONSIVE_DESIGN_QUESTIONS },
     { title: 'JavaScript: Data Types & Variables, Operators, Comparisons, Conditionals, Flows, Loops', questions: JAVASCRIPT_DATA_TYPES_VARIABLES_OPERATORS_COMPARISONS_CONDITIONALS_FLOWS_LOOPS },
     { title: 'JavaScript: Functions, Objects, Built-in Objects', questions: JAVASCRIPT_FUNCTIONS_OBJECTS_BUILTIN_OBJECTS },
@@ -75,11 +73,19 @@ export class LessonQuizComponent {
   showReview: boolean = false;
   results: { index: number; question: string; selectedOption: string; correctAnswer: string; isCorrect: boolean }[] = [];
   correctCount: number = 0;
+  totalQuestions: number = 0;
   questionNumbers: number[] = [];
   questionNumbersLimit: number = 25; // Limit for the question numbers displayed
+  previousScores: any[] = []; // Array to hold previous scores
+
+  constructor(private quizresultService: QuizresultService) {}
 
   ngOnInit() {
     this.updateQuestionNumbers();
+    this.quizresultService.results$.subscribe(results => this.results = results);
+    this.quizresultService.correctCount$.subscribe(count => this.correctCount = count);
+    this.quizresultService.totalQuestions$.subscribe(count => this.totalQuestions = count);
+    this.quizresultService.previousScores$.subscribe(scores => this.previousScores = scores);
   }
 
   updateQuestionNumbers() {
@@ -88,13 +94,15 @@ export class LessonQuizComponent {
   }
 
   getCurrentSection() {
+    console.log('Current section index:', this.currentSectionIndex); // Debugging
+    console.log('Current section questions:', this.sections[this.currentSectionIndex]?.questions.length); // Debugging
     return this.sections[this.currentSectionIndex];
   }
+
 
   changeSection(event: Event) {
     const selectElement = event.target as HTMLSelectElement;
     this.currentSectionIndex = +selectElement.value;
-    console.log('Section changed to:', this.currentSectionIndex);
     this.currentQuestionIndex = 0;
     this.updateQuestionNumbers();
   }
@@ -104,7 +112,6 @@ export class LessonQuizComponent {
   }
 
   submitAnswer() {
-    console.log('Submitting answer for question:', this.currentQuestionIndex);
     const currentQuestion = this.getCurrentSection().questions[this.currentQuestionIndex];
     if (this.selectedOption !== null) {
       const isCorrect = this.selectedOption === currentQuestion.answer;
@@ -119,21 +126,46 @@ export class LessonQuizComponent {
       if (isCorrect) {
         this.correctCount++;
       }
+      this.quizresultService.updateResults(this.results);
+      this.quizresultService.updateCorrectCount(this.correctCount);
+      this.quizresultService.updateTotalQuestions(this.getCurrentSection().questions.length);
       this.selectedOption = null;
+
+      // Move to next question if not at the end
       this.currentQuestionIndex++;
       if (this.currentQuestionIndex >= this.getCurrentSection().questions.length) {
-        this.showReview = true;
+        this.currentQuestionIndex = this.getCurrentSection().questions.length - 1; // Ensure we stay at the last question
+        this.showReview = true; // Show review when all questions are answered
       }
-    } else {
-      this.feedback = 'Please select an option.';
     }
   }
 
-  isAnswered(number: number) {
-    return this.results.some(result => result.index === (number - 1));
+
+  previousScoreExists() {
+    return this.previousScores.length > 0;
   }
 
-  get correctPercentage() {
+  retryQuiz() {
+    this.results = [];
+    this.correctCount = 0;
+    this.totalQuestions = this.getCurrentSection().questions.length;
+    this.currentQuestionIndex = 0;
+    this.showReview = false;
+  }
+
+  resetQuiz() {
+    this.results = [];
+    this.correctCount = 0;
+    this.totalQuestions = 0;
+    this.currentSectionIndex = 0;
+    this.currentQuestionIndex = 0;
+    this.updateQuestionNumbers();
+    this.showReview = false;
+  }
+   get correctPercentage() {
     return this.correctCount / this.getCurrentSection().questions.length * 100;
+  }
+  isAnswered(number: number) {
+    return this.results.some(result => result.index === (number - 1));
   }
 }

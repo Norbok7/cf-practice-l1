@@ -132,13 +132,21 @@
   background-color: var(--button-hover-bg);
 }
 
+.score-summary {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
 .correct {
-  color: #4caf50;
+  color: green;
 }
 
 .incorrect {
-  color: #f44336;
+  color: red;
 }
+
 
 ul {
   list-style-type: none;
@@ -148,4 +156,20 @@ ul {
 li {
   margin-bottom: 15px;
   color: var(--text-color);
+}
+
+.previous-scores {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.previous-scores ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.previous-scores li {
+  margin-bottom: 10px;
 }

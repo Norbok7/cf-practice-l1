@@ -3,7 +3,6 @@
   <div class="section-selector-box">
     <div class="section-selector">
       <h3>Select Quiz</h3>
-
       <!-- Unified Dropdown for All Quizzes -->
       <div class="dropdown">
         <label for="quiz-select">Select Quiz:</label>
@@ -31,7 +30,6 @@
           <option value="20">Angular: Unit Testing</option>
           <option value="21">GitHub Version Control</option>
         </select>
-
       </div>
     </div>
   </div>
@@ -70,31 +68,50 @@
       <p>{{ feedback }}</p>
     </div>
 
-    <!-- Review Section -->
-    <div *ngIf="showReview">
-      <h2>Review Your Answers</h2>
-      <p>Total Questions: {{ getCurrentSection().questions.length }}</p>
-      <p>Correct Answers: {{ correctCount }} / {{ getCurrentSection().questions.length }} ({{ correctPercentage }}%)</p>
+    <!-- Show score summary after quiz completion -->
+    <div *ngIf="showReview" class="score-summary">
+      <h3>Quiz Results</h3>
+      <p>Total Questions: {{ totalQuestions }}</p>
+      <p>Correct Answers: {{ correctCount }}</p>
+      <p>Score: {{ correctPercentage | number: '1.0-2' }}%</p>
       <ul>
-        <li *ngFor="let result of results" [ngClass]="{'correct': result.isCorrect, 'incorrect': !result.isCorrect}">
-          <p>Question {{ result.index + 1 }}: {{ result.question }}</p>
-          <p>Your Answer: {{ result.selectedOption }}</p>
-          <p>Correct Answer: {{ result.correctAnswer }}</p>
-          <p>Status: {{ result.isCorrect ? 'Correct' : 'Incorrect' }}</p>
+        <li *ngFor="let result of results">
+          <strong>Question {{ result.index + 1 }}:</strong> {{ result.question }}<br>
+          Your Answer: {{ result.selectedOption }}<br>
+          Correct Answer: {{ result.correctAnswer }}<br>
+          <span [ngClass]="{'correct': result.isCorrect, 'incorrect': !result.isCorrect}">
+            {{ result.isCorrect ? 'Correct' : 'Incorrect' }}
+          </span>
+        </li>
+      </ul>
+    </div>
+    </div>
+    <!-- Navigation Box -->
+    <div class="navigation-box">
+      <h3>Question Navigation</h3>
+      <div class="question-numbers">
+        <div *ngFor="let number of questionNumbers"
+             [ngClass]="{'answered': isAnswered(number), 'not-answered': !isAnswered(number)}"
+             (click)="navigateToQuestion(number)">
+          {{ number }}
+        </div>
+      </div>
+
+
+    <!-- Display Previous Scores -->
+    <div class="previous-scores">
+      <h3>Previous Scores</h3>
+      <ul>
+        <li *ngFor="let score of previousScores">
+          <strong>Section:</strong> {{ score.sectionTitle }}<br>
+          <strong>Correct Answers:</strong> {{ score.correctCount }}<br>
+          <strong>Total Questions:</strong> {{ score.totalQuestions }}<br>
+          <strong>Score:</strong> {{ (score.correctCount / score.totalQuestions * 100) | number: '1.0-2' }}%<br>
+          <strong>Date:</strong> {{ score.date | date: 'short' }}
         </li>
       </ul>
     </div>
   </div>
 
-  <!-- Navigation Box -->
-  <div class="navigation-box">
-    <h3>Question Navigation</h3>
-    <div class="question-numbers">
-      <div *ngFor="let number of questionNumbers"
-           [ngClass]="{'answered': isAnswered(number), 'not-answered': !isAnswered(number)}"
-           (click)="navigateToQuestion(number)">
-        {{ number }}
-      </div>
-    </div>
   </div>
-</div>
+
