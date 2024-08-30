@@ -21,7 +21,6 @@ import { ANGULAR_UNIT_TESTING_QUESTIONS } from '../quiz-questions/ANGULAR/angula
 import { BASIC_HTML_CSS_DEV_TOOLS } from '../quiz-questions/BASICS HTML/CSS/DEV TOOLS/GITHUB/html-css-devtools-questions';
 import { GITHUB_VERSION_CONTROL_QUESTIONS } from '../quiz-questions/BASICS HTML/CSS/DEV TOOLS/GITHUB/github-version-control-questions';
 import { INTERMEDIATE_CSS_WITH_RESPONSIVE_DESIGN_QUESTIONS } from '../quiz-questions/BASICS HTML/CSS/DEV TOOLS/GITHUB/intermediate-css-with-responsive-design';
-
 @Component({
   selector: 'app-lesson-quiz',
   standalone: true,
@@ -51,103 +50,87 @@ export class LessonQuizComponent {
     // JavaScript
     { title: 'JavaScript', questions: [
         ...JAVASCRIPT_DATA_TYPES_VARIABLES_OPERATORS_COMPARISONS_CONDITIONALS_FLOWS_LOOPS
-        // Add more JavaScript related questions here if available
     ]},
 
-    // Basics
-    { title: 'Basics', questions: [
+    // HTML/CSS
+    { title: 'HTML/CSS', questions: [
         ...BASIC_HTML_CSS_DEV_TOOLS,
-        ...INTERMEDIATE_CSS_WITH_RESPONSIVE_DESIGN_QUESTIONS,
-        ...GITHUB_VERSION_CONTROL_QUESTIONS
-        // Add more basic related questions here if available
+        ...GITHUB_VERSION_CONTROL_QUESTIONS,
+        ...INTERMEDIATE_CSS_WITH_RESPONSIVE_DESIGN_QUESTIONS
     ]}
   ];
 
   currentSectionIndex: number = 0;
   currentQuestionIndex: number = 0;
-  selectedOption: string = '';
+  selectedOption: string | null = null;
   feedback: string = '';
-  isAnswerCorrect: boolean = false;
   showReview: boolean = false;
-  results: { section: string, index: number, question: string, selectedOption: string, correctAnswer: string, isCorrect: boolean }[] = [];
+  results: { index: number; question: string; selectedOption: string; correctAnswer: string; isCorrect: boolean }[] = [];
+  correctCount: number = 0;
   questionNumbers: number[] = [];
+  questionNumbersLimit: number = 25; // Limit for the question numbers displayed
 
-  @ViewChild(LessonTimerComponent) timerComponent!: LessonTimerComponent;
-
-  constructor() {
+  ngOnInit() {
     this.updateQuestionNumbers();
   }
 
+  // Method to update question numbers for the active section
+  updateQuestionNumbers() {
+    const currentSectionQuestions = this.getCurrentSection().questions;
+    this.questionNumbers = Array.from({ length: Math.min(currentSectionQuestions.length, this.questionNumbersLimit) }, (_, i) => i + 1);
+  }
+
+  // Get the current section based on index
   getCurrentSection() {
     return this.sections[this.currentSectionIndex];
   }
 
-  submitAnswer() {
-    const currentQuestion: Question = this.getCurrentSection().questions[this.currentQuestionIndex];
-    this.isAnswerCorrect = this.selectedOption === currentQuestion.answer;
-    this.feedback = this.isAnswerCorrect ? 'Correct Answer!' : 'Wrong Answer!';
-
-    this.results.push({
-      section: this.getCurrentSection().title,
-      index: this.currentQuestionIndex,
-      question: currentQuestion.question,
-      selectedOption: this.selectedOption,
-      correctAnswer: currentQuestion.answer,
-      isCorrect: this.isAnswerCorrect
-    });
-
-    this.currentQuestionIndex++;
-    this.selectedOption = ''; // Reset selected option after submission
-
-    if (this.currentQuestionIndex >= this.getCurrentSection().questions.length) {
-      this.showReview = true; // Show review section after all questions
-    } else {
-      this.timerComponent.resetTimer(); // Reset timer for the new question
-    }
+  // Method to handle quiz section change
+  changeSection(event: Event) {
+    const selectElement = event.target as HTMLSelectElement;
+    this.currentSectionIndex = +selectElement.value;
+    this.currentQuestionIndex = 0;
     this.updateQuestionNumbers();
   }
 
-  reviewAnswers() {
-    this.showReview = true;
+  // Method to navigate to a specific question
+  navigateToQuestion(number: number) {
+    this.currentQuestionIndex = number - 1;
   }
 
-  isAnswered(questionNumber: number): boolean {
-    return this.results.some(result => result.index + 1 === questionNumber);
-  }
-
-  navigateToQuestion(questionNumber: number) {
-    if (questionNumber < 1 || questionNumber > this.getCurrentSection().questions.length) {
-      return;
+  // Method to submit the current answer
+  submitAnswer() {
+    const currentQuestion = this.getCurrentSection().questions[this.currentQuestionIndex];
+    if (this.selectedOption !== null) {
+      const isCorrect = this.selectedOption === currentQuestion.answer;
+      this.feedback = isCorrect ? 'Correct!' : `Incorrect. The correct answer was: ${currentQuestion.answer}`;
+      this.results.push({
+        index: this.currentQuestionIndex,
+        question: currentQuestion.question,
+        selectedOption: this.selectedOption,
+        correctAnswer: currentQuestion.answer,
+        isCorrect: isCorrect
+      });
+      if (isCorrect) {
+        this.correctCount++;
+      }
+      this.selectedOption = null;
+      this.currentQuestionIndex++;
+      if (this.currentQuestionIndex >= this.getCurrentSection().questions.length) {
+        this.showReview = true;
+      }
+    } else {
+      this.feedback = 'Please select an option.';
     }
-    this.currentQuestionIndex = questionNumber - 1;
-    this.selectedOption = this.results.find(result => result.index + 1 === questionNumber)?.selectedOption || '';
-    this.feedback = '';
-    this.timerComponent.resetTimer();
   }
 
-  get correctCount(): number {
-    return this.results.filter(result => result.isCorrect).length;
+  // Method to check if a question has been answered
+  isAnswered(number: number) {
+    return this.results.some(result => result.index === (number - 1));
   }
 
-  get correctPercentage(): number {
-    return Math.round((this.correctCount / this.getCurrentSection().questions.length) * 100);
-  }
-
-  private updateQuestionNumbers() {
-    this.questionNumbers = Array.from({ length: this.getCurrentSection().questions.length }, (_, i) => i + 1);
-  }
-
-  changeSection(event: Event) {
-    const target = event.target as HTMLSelectElement;
-    const sectionIndex = parseInt(target.value, 10);
-
-    if (sectionIndex >= 0 && sectionIndex < this.sections.length) {
-      this.currentSectionIndex = sectionIndex;
-      this.currentQuestionIndex = 0; // Reset to the first question of the new section
-      this.selectedOption = '';
-      this.feedback = '';
-      this.showReview = false; // Hide review section when changing sections
-      this.updateQuestionNumbers();
-    }
+  // Calculate the percentage of correct answers
+  get correctPercentage() {
+    return this.correctCount / this.getCurrentSection().questions.length * 100;
   }
 }
