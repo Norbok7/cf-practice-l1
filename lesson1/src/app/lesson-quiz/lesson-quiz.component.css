@@ -118,18 +118,20 @@
 }
 
 .quiz-section button {
-  background-color: var(--button-bg);
-  color: var(--text-color);
+  background: linear-gradient(115deg, #14532d, #15803d 73%, #166534); /* Gradient background */
   border: none;
   padding: 10px 20px;
   font-size: 1em;
   cursor: pointer;
   border-radius: 5px;
-  transition: background-color 0.3s;
+  color: black; /* Ensure text color is set */
+  transition: background 0.3s, transform 0.3s, box-shadow 0.3s; /* Smooth transitions */
 }
 
 .quiz-section button:hover {
-  background-color: var(--button-hover-bg);
+  background: linear-gradient(115deg, #336237, #64ad7e 73%, #14532d); /* Gradient for hover */
+  transform: scale(1.05); /* Slightly enlarge the button on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add a shadow for depth */
 }
 
 .score-summary {

@@ -15,20 +15,21 @@
 }
 
 .topic-title {
-  align-content: center;
   height: 40px;
   cursor: pointer;
   padding: 10px;
-  background: linear-gradient(115deg, #14532d, #15803d 73%, #166534); /* Updated with gradient */
-  color: var(--text-color); /* Example: #fff */
+  background: linear-gradient(115deg, #14532d, #15803d 73%, #166534); /* Gradient background */
+  color: black; /* Example: #fff */
   border-radius: 5px;
   text-align: center;
   font-weight: bold;
-  transition: background-color 0.3s;
+  transition: background 0.3s, transform 0.3s, box-shadow 0.3s; /* Smooth transitions */
 }
 
 .topic-title:hover {
-  background-color: var(--button-hover-bg); /* Example: #666 */
+  background: linear-gradient(115deg, #166534, #15803d 73%, #14532d); /* Gradient for hover */
+  transform: scale(1.05); /* Slightly enlarge the title on hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add a shadow for depth */
 }
 
 .lesson-list {
