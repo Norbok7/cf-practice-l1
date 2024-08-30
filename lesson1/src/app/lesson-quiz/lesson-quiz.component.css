@@ -68,27 +68,27 @@
 .question-numbers {
   display: flex;
   flex-wrap: wrap;
-  gap: 5px;
 }
 
 .question-numbers div {
-  width: 30px;
+  width: 30px; /* Adjust size as needed */
   height: 30px;
+  margin: 5px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
   cursor: pointer;
-  font-weight: bold;
-  color: var(--text-color);
+  color: white;
+  text-align: center;
 }
 
-.answered {
-  background-color: #4caf50;
+.answered-correct {
+  background-color: #28a745; /* Green for correct answers */
 }
 
-.not-answered {
-  background-color: #f44336;
+.answered-incorrect {
+  background-color: #dc3545; /* Red for incorrect answers */
 }
 
 /* Dark theme for quiz section */

@@ -90,7 +90,11 @@
       <h3>Question Navigation</h3>
       <div class="question-numbers">
         <div *ngFor="let number of questionNumbers"
-             [ngClass]="{'answered': isAnswered(number), 'not-answered': !isAnswered(number)}"
+             [ngClass]="{
+               'base-color': !isAnswered(number),
+               'answered-correct': isAnswered(number) && isCorrect(number),
+               'answered-incorrect': isAnswered(number) && !isCorrect(number)
+             }"
              (click)="navigateToQuestion(number)">
           {{ number }}
         </div>

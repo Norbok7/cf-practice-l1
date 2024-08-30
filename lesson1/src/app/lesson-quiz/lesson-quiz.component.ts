@@ -76,6 +76,7 @@ export class LessonQuizComponent {
   totalQuestions: number = 0;
   previousScores: any[] = [];
   questionNumbers: number[] = Array.from({ length: 25 }, (_, i) => i + 1); // Assuming 25 questions
+  answers = {}; // Object to store answers, e.g., {1: 'True', 2: 'False'}
 
   constructor() {
     this.previousScores = JSON.parse(localStorage.getItem('previousScores') || '[]');
@@ -134,9 +135,14 @@ export class LessonQuizComponent {
 
 
   isAnswered(questionNumber: number): boolean {
-    return this.results.some(result => result.index + 1 === questionNumber);
+    return this.results.some(result => result.index + 1 === questionNumber && result.selectedOption !== undefined);
   }
 
+  isCorrect(questionNumber: number): boolean {
+    const result = this.results.find(result => result.index + 1 === questionNumber);
+    return result ? result.selectedOption === result.correctAnswer : false;
+  }
+  
   navigateToQuestion(questionNumber: number) {
     this.currentQuestionIndex = questionNumber - 1;
   }
