@@ -14,7 +14,7 @@ import { JAVASCRIPT_INTERMEDIATE_CONCEPTS_QUESTIONS } from '../quiz-questions/JA
 import { JAVASCRIPT_BUILDING_REAL_THINGS_QUESTIONS } from '../quiz-questions/JAVASCRIPT/javascript-building-real-things';
 
 import { ANGULAR_GETTING_STARTED_QUESTIONS } from '../quiz-questions/ANGULAR/angular-getting-started-questions';
-import { ANGULAR_PROJECT_BASICS_QUESTIONS } from '../quiz-questions/ANGULAR/angular-project-basics-questions';
+import { ANGULAR_PROJECT_BASICS_DEBUGGING_QUESTIONS } from '../quiz-questions/ANGULAR/angular-project-basics-questions';
 import { ANGULAR_COMPONENTS_QUESTIONS } from '../quiz-questions/ANGULAR/angular-components-questions';
 import { ANGULAR_DIRECTIVES_QUESTIONS } from '../quiz-questions/ANGULAR/angular-directives-questions';
 import { ANGULAR_ROUTING_QUESTIONS } from '../quiz-questions/ANGULAR/angular-routing-questions';
@@ -54,10 +54,9 @@ export class LessonQuizComponent {
     { title: 'JavaScript: Bookmarking App', questions: JAVASCRIPT_BOOKMARKING_APP_QUESTIONS },
     { title: 'TypeScript: Introduction', questions: TYPESCRIPT_INTRODUCTION_QUESTIONS },
     { title: 'Angular: Completing Getting Started', questions: ANGULAR_GETTING_STARTED_QUESTIONS },
-    { title: 'Angular: The Basics, Debugging', questions: ANGULAR_PROJECT_BASICS_QUESTIONS },
+    { title: 'Angular: The Basics, Debugging', questions: ANGULAR_PROJECT_BASICS_DEBUGGING_QUESTIONS },
     { title: 'Angular: Components & Databinding deep dive', questions: ANGULAR_COMPONENTS_QUESTIONS },
     { title: 'Angular: Directives deep dive', questions: ANGULAR_DIRECTIVES_QUESTIONS },
-    { title: 'Angular: Changing pages with routing', questions: ANGULAR_ROUTING_QUESTIONS },
     { title: 'Angular: Routing & Observables', questions: ANGULAR_ROUTING_QUESTIONS },
     { title: 'Angular: Handling forms in Angular apps', questions: ANGULAR_FORMS_QUESTIONS },
     { title: 'Angular: Making HTTP requests', questions: ANGULAR_HTTP_QUESTIONS },

@@ -1,4 +1,4 @@
-export const ANGULAR_PROJECT_BASICS_QUESTIONS = [
+export const ANGULAR_PROJECT_BASICS_DEBUGGING_QUESTIONS = [
   { id: 1, question: 'What is the purpose of planning an application before starting development?', options: [], answer: '' },
   { id: 2, question: 'Why is it important to create an intuitive folder structure in a project?', options: [], answer: '' },
   { id: 3, question: 'What is the role of Bootstrap in creating a navigation bar?', options: [], answer: '' },
