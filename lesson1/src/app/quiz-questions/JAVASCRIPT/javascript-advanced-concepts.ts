@@ -1,27 +1,36 @@
 export const ADVANCED_CONCEPTS_QUESTIONS = [
-  { id: 1, question: 'What is 2 + 2?', options: ['3', '4', '5'], answer: '4' },
-  { id: 2, question: 'In Angular, a component can be directly injected into another component without using a service. (True/False)', options: [], answer: 'False' },
-  { id: 3, question: 'Angular’s dependency injection system can be used for any injectable class. (True/False)', options: [], answer: 'True' },
-  { id: 4, question: 'Which Angular decorator is used to define a service?', options: ['@Component', '@Injectable', '@Directive', '@Pipe'], answer: '@Injectable' },
-  { id: 5, question: 'What is the default change detection strategy in Angular?', options: ['OnPush', 'Default', 'NoChange', 'Manual'], answer: 'Default' },
-  { id: 6, question: 'What is the purpose of `ngModel` in Angular?', options: ['To define a new Angular module', 'To bind a form input to a property in the component', 'To create a new Angular component', 'To define a route in the Angular application'], answer: 'To bind a form input to a property in the component' },
-  { id: 7, question: 'Which Angular module should be imported to use HTTP services?', options: ['HttpClientModule', 'FormsModule', 'ReactiveFormsModule', 'RouterModule'], answer: 'HttpClientModule' },
-  { id: 8, question: 'The `ngOnInit` lifecycle hook is called before the `constructor` of an Angular component. (True/False)', options: [], answer: 'False' },
-  { id: 9, question: 'In Angular, pipes can be used to transform data in templates without altering the original data. (True/False)', options: [], answer: 'True' },
-  { id: 10, question: 'The `FormsModule` is required for template-driven forms but not for reactive forms in Angular. (True/False)', options: [], answer: 'True' },
-  { id: 11, question: 'Which of the following is NOT a valid Angular lifecycle hook?', options: ['ngOnDestroy', 'ngOnChanges', 'ngAfterViewInit', 'ngOnInit', 'ngAfterViewChange'], answer: 'ngAfterViewChange' },
-  { id: 12, question: 'Angular components are decorated with which decorator?', options: ['@Component', '@Injectable', '@NgModule', '@Directive'], answer: '@Component' },
-  { id: 13, question: 'In Angular, how do you bind a component property to an HTML element?', options: ['Using `@Input` decorator', 'Using `ngModel` directive', 'Using `{{ }}` syntax', 'Using `[(ngModel)]` syntax'], answer: 'Using `[(ngModel)]` syntax' },
-  { id: 14, question: 'What is the main purpose of Angular services?', options: ['To define routes', 'To share data and logic across components', 'To handle HTTP requests', 'To style components'], answer: 'To share data and logic across components' },
-  { id: 15, question: 'Which of the following commands creates a new Angular component?', options: ['ng generate component', 'ng create component', 'ng add component', 'ng build component'], answer: 'ng generate component' },
-  { id: 16, question: 'In Angular, what is a module?', options: ['A component', 'A collection of services', 'A container for a group of related components, directives, pipes, and services', 'A type of directive'], answer: 'A container for a group of related components, directives, pipes, and services' },
-  { id: 17, question: 'True or False: Angular modules can import other modules.', options: [], answer: 'True' },
-  { id: 18, question: 'Which lifecycle hook is used to perform actions after Angular initializes the component’s views and child views?', options: ['ngAfterViewInit', 'ngOnInit', 'ngOnChanges', 'ngOnDestroy'], answer: 'ngAfterViewInit' },
-  { id: 19, question: 'In Angular, the `@NgModule` decorator is used to define:', options: ['A component', 'A service', 'A module', 'A directive'], answer: 'A module' },
-  { id: 20, question: 'True or False: Angular components can have multiple template files.', options: [], answer: 'False' },
-  { id: 21, question: 'What is the purpose of `ReactiveFormsModule` in Angular?', options: ['To create reactive forms', 'To handle HTTP requests', 'To manage component styling', 'To manage routing'], answer: 'To create reactive forms' },
-  { id: 22, question: 'Which directive is used to bind an HTML element’s attribute to a component property?', options: ['ngClass', 'ngStyle', 'ngModel', 'ngBind'], answer: 'ngBind' },
-  { id: 23, question: 'True or False: Angular’s `RouterModule` is used to handle routing within the application.', options: [], answer: 'True' },
-  { id: 24, question: 'Which of the following is NOT a valid Angular directive?', options: ['@Component', '@Directive', '@Pipe', '@Service'], answer: '@Service' },
-  { id: 25, question: 'What is the main function of the `ngFor` directive in Angular?', options: ['To loop through a collection and render a template for each item', 'To conditionally render elements', 'To bind form inputs', 'To handle user events'], answer: 'To loop through a collection and render a template for each item' }
+  // Design Patterns
+  { id: 1, question: 'Design patterns are best practices for solving common problems in software engineering. (True/False)', options: [], answer: 'True' },
+  { id: 2, question: 'The Builder Design Pattern is a creational pattern used to construct complex objects. (True/False)', options: [], answer: 'True' },
+  { id: 3, question: 'The Facade Design Pattern is a structural pattern that hides complex logic behind a simple interface. (True/False)', options: [], answer: 'True' },
+  { id: 4, question: 'The Composite Design Pattern is used to treat individual objects and compositions of objects uniformly. (True/False)', options: [], answer: 'True' },
+  { id: 5, question: 'The Observer Design Pattern is a behavioral pattern that allows objects to be notified of changes in other objects. (True/False)', options: [], answer: 'True' },
+
+  // Callbacks and Promises
+  { id: 6, question: 'In JavaScript, callbacks are functions passed as arguments to other functions. (True/False)', options: [], answer: 'True' },
+  { id: 7, question: 'Promises in JavaScript can be in one of three states: pending, fulfilled, or rejected. (True/False)', options: [], answer: 'True' },
+  { id: 8, question: 'The `catch` method of a promise is used to handle fulfilled promises. (True/False)', options: [], answer: 'False' },
+  { id: 9, question: 'Promises are useful for managing asynchronous operations and avoiding callback hell. (True/False)', options: [], answer: 'True' },
+  { id: 10, question: 'Using `setTimeout` is an example of synchronous coding. (True/False)', options: [], answer: 'False' },
+
+  // Async/Await
+  { id: 11, question: 'Async functions always return a promise in JavaScript. (True/False)', options: [], answer: 'True' },
+  { id: 12, question: 'The `await` keyword can only be used inside asynchronous functions. (True/False)', options: [], answer: 'True' },
+  { id: 13, question: 'Using `await` makes asynchronous code look and behave more like synchronous code. (True/False)', options: [], answer: 'True' },
+  { id: 14, question: 'The `async` keyword is used to define a callback function. (True/False)', options: [], answer: 'False' },
+  { id: 15, question: 'The `await` keyword can be used to pause the execution of a synchronous function. (True/False)', options: [], answer: 'False' },
+
+  // Memoization
+  { id: 16, question: 'Memoization involves storing the results of expensive function calls and reusing them when the same inputs occur. (True/False)', options: [], answer: 'True' },
+  { id: 17, question: 'Memoization can help to speed up recursive functions by caching previously computed results. (True/False)', options: [], answer: 'True' },
+  { id: 18, question: 'Memoized functions store results in a cache to avoid redundant calculations. (True/False)', options: [], answer: 'True' },
+  { id: 19, question: 'Memoization is only useful for functions with side effects. (True/False)', options: [], answer: 'False' },
+  { id: 20, question: 'Memoization can be applied using higher-order functions (HOF). (True/False)', options: [], answer: 'True' },
+
+  // Spread vs. Rest
+  { id: 21, question: 'The spread operator allows you to expand iterables into individual elements. (True/False)', options: [], answer: 'True' },
+  { id: 22, question: 'The rest operator collects all remaining arguments into an array. (True/False)', options: [], answer: 'True' },
+  { id: 23, question: 'The spread operator can be used to combine arrays. (True/False)', options: [], answer: 'True' },
+  { id: 24, question: 'The rest operator is used to extract elements from an array. (True/False)', options: [], answer: 'False' },
+  { id: 25, question: 'The spread operator is used to gather multiple elements into a single array. (True/False)', options: [], answer: 'False' }
 ];
