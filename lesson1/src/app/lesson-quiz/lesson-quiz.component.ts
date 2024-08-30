@@ -16,7 +16,7 @@ import { ANGULAR_FORMS_QUESTIONS } from '../quiz-questions/ANGULAR/angular-forms
 import { ANGULAR_HTTP_QUESTIONS } from '../quiz-questions/ANGULAR/angular-http-questions';
 import { ANGULAR_AUTHENTICATION_QUESTIONS } from '../quiz-questions/ANGULAR/angular-authentication-questions';
 import { ANGULAR_DYNAMIC_COMPONENTS_QUESTIONS } from '../quiz-questions/ANGULAR/angular-dynamic-components-questions';
-import { ANGULAR_ANIMATIONS_QUESTIONS } from '../quiz-questions/ANGULAR/angular-animations-questions';
+import { ANGULAR_ANIMATIONS_DEPLOYING_QUESTIONS } from '../quiz-questions/ANGULAR/angular-animations-questions';
 import { ANGULAR_UNIT_TESTING_QUESTIONS } from '../quiz-questions/ANGULAR/angular-unit-testing-questions';
 import { BASIC_HTML_CSS_DEV_TOOLS } from '../quiz-questions/BASICS HTML/CSS/DEV TOOLS/GITHUB/html-css-devtools-questions';
 import { GITHUB_VERSION_CONTROL_QUESTIONS } from '../quiz-questions/BASICS HTML/CSS/DEV TOOLS/GITHUB/github-version-control-questions';
@@ -43,7 +43,7 @@ export class LessonQuizComponent {
         ...ANGULAR_HTTP_QUESTIONS,
         ...ANGULAR_AUTHENTICATION_QUESTIONS,
         ...ANGULAR_DYNAMIC_COMPONENTS_QUESTIONS,
-        ...ANGULAR_ANIMATIONS_QUESTIONS,
+        ...ANGULAR_ANIMATIONS_DEPLOYING_QUESTIONS,
         ...ANGULAR_UNIT_TESTING_QUESTIONS,
         ...TYPESCRIPT_INTRODUCTION_QUESTIONS
     ]},
