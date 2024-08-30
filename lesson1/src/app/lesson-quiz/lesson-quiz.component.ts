@@ -27,6 +27,7 @@ import { ANGULAR_UNIT_TESTING_QUESTIONS } from '../quiz-questions/ANGULAR/angula
 import { BASIC_HTML_CSS_DEV_TOOLS } from '../quiz-questions/BASICS HTML/CSS/DEV TOOLS/GITHUB/html-css-devtools-questions';
 import { GITHUB_VERSION_CONTROL_QUESTIONS } from '../quiz-questions/BASICS HTML/CSS/DEV TOOLS/GITHUB/github-version-control-questions';
 import { INTERMEDIATE_CSS_WITH_RESPONSIVE_DESIGN_QUESTIONS } from '../quiz-questions/BASICS HTML/CSS/DEV TOOLS/GITHUB/intermediate-css-with-responsive-design';
+import { JAVASCRIPT_ESSENTIAL_CONCEPTS_SCOPE_HOISTING_JAVASCRIPTVSECMASCRIPT_QUESTIONS } from '../quiz-questions/JAVASCRIPT/javascript-essential-concepts-scope-hoisting-javascriptsvsecmascript';
 
 @Component({
   selector: 'app-lesson-quiz',
@@ -38,41 +39,35 @@ import { INTERMEDIATE_CSS_WITH_RESPONSIVE_DESIGN_QUESTIONS } from '../quiz-quest
 export class LessonQuizComponent {
   // Defining quiz sections with categorized questions
   sections: { title: string; questions: Question[] }[] = [
-    // Basic Angular and TypeScript
-    { title: 'Basic Angular & TypeScript', questions: [
-        ...ANGULAR_GETTING_STARTED_QUESTIONS,
-        ...ANGULAR_PROJECT_BASICS_QUESTIONS,
-        ...ANGULAR_COMPONENTS_QUESTIONS,
-        ...ANGULAR_DIRECTIVES_QUESTIONS,
-        ...ANGULAR_ROUTING_QUESTIONS,
-        ...ANGULAR_FORMS_QUESTIONS,
-        ...ANGULAR_HTTP_QUESTIONS,
-        ...ANGULAR_AUTHENTICATION_QUESTIONS,
-        ...ANGULAR_DYNAMIC_COMPONENTS_QUESTIONS,
-        ...ANGULAR_ANIMATIONS_DEPLOYING_QUESTIONS,
-        ...ANGULAR_UNIT_TESTING_QUESTIONS,
-        ...TYPESCRIPT_INTRODUCTION_QUESTIONS
-    ]},
-
-    // JavaScript
-    { title: 'JavaScript', questions: [
-        ...JAVASCRIPT_DATA_TYPES_VARIABLES_OPERATORS_COMPARISONS_CONDITIONALS_FLOWS_LOOPS,
-        ...JAVASCRIPT_ADVANCED_CONCEPTS_QUESTIONS,
-        ...JAVASCRIPT_BUILDING_REAL_THINGS_QUESTIONS,
-        ...JAVASCRIPT_DATA_TYPES_VARIABLES_OPERATORS_COMPARISONS_CONDITIONALS_FLOWS_LOOPS,
-        ...JAVASCRIPT_DATA_TYPES_VARIABLES_OPERATORS_COMPARISONS_CONDITIONALS_FLOWS_LOOPS,
-        ...JAVASCRIPT_FUNCTIONS_OBJECTS_BUILTIN_OBJECTS,
-        ...JAVASCRIPT_INTERMEDIATE_CONCEPTS_QUESTIONS,
-        ...JAVASCRIPT_BOOKMARKING_APP_QUESTIONS   ]},
-
-    // HTML/CSS
-    { title: 'HTML/CSS', questions: [
+    { title: 'HTML/CSS + Dev Tools', questions: [
         ...BASIC_HTML_CSS_DEV_TOOLS,
         ...GITHUB_VERSION_CONTROL_QUESTIONS,
-        ...INTERMEDIATE_CSS_WITH_RESPONSIVE_DESIGN_QUESTIONS,
-
-    ]}
+        ...INTERMEDIATE_CSS_WITH_RESPONSIVE_DESIGN_QUESTIONS
+    ]},
+    { title: 'Intermediate CSS with Responsive Design', questions: INTERMEDIATE_CSS_WITH_RESPONSIVE_DESIGN_QUESTIONS },
+    { title: 'JavaScript: Data Types & Variables, Operators, Comparisons, Conditionals, Flows, Loops', questions: JAVASCRIPT_DATA_TYPES_VARIABLES_OPERATORS_COMPARISONS_CONDITIONALS_FLOWS_LOOPS },
+    { title: 'JavaScript: Functions, Objects, Built-in Objects', questions: JAVASCRIPT_FUNCTIONS_OBJECTS_BUILTIN_OBJECTS },
+    { title: 'JavaScript: Scope, Hoisting, JavaScript vs EcmaScript', questions: JAVASCRIPT_ESSENTIAL_CONCEPTS_SCOPE_HOISTING_JAVASCRIPTVSECMASCRIPT_QUESTIONS },
+    { title: 'JavaScript Intermediate Concepts', questions: JAVASCRIPT_INTERMEDIATE_CONCEPTS_QUESTIONS },
+    { title: 'JavaScript Advanced Concepts', questions: JAVASCRIPT_ADVANCED_CONCEPTS_QUESTIONS },
+    { title: 'JavaScript: Building Real Things', questions: JAVASCRIPT_BUILDING_REAL_THINGS_QUESTIONS },
+    { title: 'JavaScript: Bookmarking App', questions: JAVASCRIPT_BOOKMARKING_APP_QUESTIONS },
+    { title: 'TypeScript: Introduction', questions: TYPESCRIPT_INTRODUCTION_QUESTIONS },
+    { title: 'Angular: Completing Getting Started', questions: ANGULAR_GETTING_STARTED_QUESTIONS },
+    { title: 'Angular: The Basics, Debugging', questions: ANGULAR_PROJECT_BASICS_QUESTIONS },
+    { title: 'Angular: Components & Databinding deep dive', questions: ANGULAR_COMPONENTS_QUESTIONS },
+    { title: 'Angular: Directives deep dive', questions: ANGULAR_DIRECTIVES_QUESTIONS },
+    { title: 'Angular: Changing pages with routing', questions: ANGULAR_ROUTING_QUESTIONS },
+    { title: 'Angular: Routing & Observables', questions: ANGULAR_ROUTING_QUESTIONS },
+    { title: 'Angular: Handling forms in Angular apps', questions: ANGULAR_FORMS_QUESTIONS },
+    { title: 'Angular: Making HTTP requests', questions: ANGULAR_HTTP_QUESTIONS },
+    { title: 'Angular: Authentication & Route Protection', questions: ANGULAR_AUTHENTICATION_QUESTIONS },
+    { title: 'Angular: Dynamic Components, Modules & Optimizations', questions: ANGULAR_DYNAMIC_COMPONENTS_QUESTIONS },
+    { title: 'Angular: Animations, Service Workers & Deployment', questions: ANGULAR_ANIMATIONS_DEPLOYING_QUESTIONS },
+    { title: 'Angular: Unit Testing', questions: ANGULAR_UNIT_TESTING_QUESTIONS },
+    { title: 'GitHub Version Control', questions: GITHUB_VERSION_CONTROL_QUESTIONS }
   ];
+
 
   currentSectionIndex: number = 0;
   currentQuestionIndex: number = 0;
@@ -88,32 +83,29 @@ export class LessonQuizComponent {
     this.updateQuestionNumbers();
   }
 
-  // Method to update question numbers for the active section
   updateQuestionNumbers() {
     const currentSectionQuestions = this.getCurrentSection().questions;
     this.questionNumbers = Array.from({ length: Math.min(currentSectionQuestions.length, this.questionNumbersLimit) }, (_, i) => i + 1);
   }
 
-  // Get the current section based on index
   getCurrentSection() {
     return this.sections[this.currentSectionIndex];
   }
 
-  // Method to handle quiz section change
   changeSection(event: Event) {
     const selectElement = event.target as HTMLSelectElement;
     this.currentSectionIndex = +selectElement.value;
+    console.log('Section changed to:', this.currentSectionIndex);
     this.currentQuestionIndex = 0;
     this.updateQuestionNumbers();
   }
 
-  // Method to navigate to a specific question
   navigateToQuestion(number: number) {
     this.currentQuestionIndex = number - 1;
   }
 
-  // Method to submit the current answer
   submitAnswer() {
+    console.log('Submitting answer for question:', this.currentQuestionIndex);
     const currentQuestion = this.getCurrentSection().questions[this.currentQuestionIndex];
     if (this.selectedOption !== null) {
       const isCorrect = this.selectedOption === currentQuestion.answer;
@@ -138,12 +130,10 @@ export class LessonQuizComponent {
     }
   }
 
-  // Method to check if a question has been answered
   isAnswered(number: number) {
     return this.results.some(result => result.index === (number - 1));
   }
 
-  // Calculate the percentage of correct answers
   get correctPercentage() {
     return this.correctCount / this.getCurrentSection().questions.length * 100;
   }
