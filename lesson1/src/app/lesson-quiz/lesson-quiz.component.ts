@@ -74,51 +74,29 @@ export class LessonQuizComponent {
   results: { index: number; question: string; selectedOption: string; correctAnswer: string; isCorrect: boolean }[] = [];
   correctCount: number = 0;
   totalQuestions: number = 0;
-  questionNumbers: number[] = [];
-  questionNumbersLimit: number = 25; // Limit for the question numbers displayed
-  previousScores: any[] = []; // Array to hold previous scores
+  previousScores: any[] = [];
+  questionNumbers: number[] = Array.from({ length: 25 }, (_, i) => i + 1); // Assuming 25 questions
 
-  constructor(private quizresultService: QuizresultService) {}
-
-  ngOnInit() {
-    this.updateQuestionNumbers();
-    this.quizresultService.results$.subscribe(results => this.results = results);
-    this.quizresultService.correctCount$.subscribe(count => this.correctCount = count);
-    this.quizresultService.totalQuestions$.subscribe(count => this.totalQuestions = count);
-    this.quizresultService.previousScores$.subscribe(scores => {
-      console.log('Previous scores updated:', scores); // Debugging
-      this.previousScores = scores;
-    });
-  }
-
-  updateQuestionNumbers() {
-    const currentSectionQuestions = this.getCurrentSection().questions;
-    this.questionNumbers = Array.from({ length: Math.min(currentSectionQuestions.length, this.questionNumbersLimit) }, (_, i) => i + 1);
+  constructor() {
+    this.previousScores = JSON.parse(localStorage.getItem('previousScores') || '[]');
   }
 
   getCurrentSection() {
-    console.log('Current section index:', this.currentSectionIndex); // Debugging
-    console.log('Current section questions:', this.sections[this.currentSectionIndex]?.questions.length); // Debugging
     return this.sections[this.currentSectionIndex];
   }
 
-
-  changeSection(event: Event) {
-    const selectElement = event.target as HTMLSelectElement;
-    this.currentSectionIndex = +selectElement.value;
+  changeSection(event: any) {
+    this.currentSectionIndex = parseInt(event.target.value, 10);
     this.currentQuestionIndex = 0;
-    this.updateQuestionNumbers();
-  }
-
-  navigateToQuestion(number: number) {
-    this.currentQuestionIndex = number - 1;
+    this.selectedOption = null;
+    this.feedback = '';
+    this.showReview = false;
   }
 
   submitAnswer() {
-    const currentQuestion = this.getCurrentSection().questions[this.currentQuestionIndex];
-    if (this.selectedOption !== null) {
+    if (this.selectedOption) {
+      const currentQuestion = this.getCurrentSection().questions[this.currentQuestionIndex];
       const isCorrect = this.selectedOption === currentQuestion.answer;
-      this.feedback = isCorrect ? 'Correct!' : `Incorrect. The correct answer was: ${currentQuestion.answer}`;
       this.results.push({
         index: this.currentQuestionIndex,
         question: currentQuestion.question,
@@ -126,49 +104,43 @@ export class LessonQuizComponent {
         correctAnswer: currentQuestion.answer,
         isCorrect: isCorrect
       });
+
       if (isCorrect) {
         this.correctCount++;
       }
-      this.quizresultService.updateResults(this.results);
-      this.quizresultService.updateCorrectCount(this.correctCount);
-      this.quizresultService.updateTotalQuestions(this.getCurrentSection().questions.length);
+      this.feedback = isCorrect ? 'Correct!' : 'Incorrect, try again!';
       this.selectedOption = null;
 
-      // Move to next question if not at the end
-      this.currentQuestionIndex++;
-      if (this.currentQuestionIndex >= this.getCurrentSection().questions.length) {
-        this.currentQuestionIndex = this.getCurrentSection().questions.length - 1; // Ensure we stay at the last question
-        this.showReview = true; // Show review when all questions are answered
+      if (this.currentQuestionIndex < 24) {
+        this.currentQuestionIndex++;
+      } else {
+        this.showReview = true;
+        this.saveScore();
       }
     }
   }
 
-
-  previousScoreExists() {
-    return this.previousScores.length > 0;
+  saveScore() {
+    const scoreData = {
+      sectionTitle: this.getCurrentSection().title,
+      correctCount: this.correctCount,
+      totalQuestions: this.getCurrentSection().questions.length,
+      date: new Date()
+    };
+    this.previousScores.push(scoreData);
+    localStorage.setItem('previousScores', JSON.stringify(this.previousScores));
   }
 
-  retryQuiz() {
-    this.results = [];
-    this.correctCount = 0;
-    this.totalQuestions = this.getCurrentSection().questions.length;
-    this.currentQuestionIndex = 0;
-    this.showReview = false;
+
+  isAnswered(questionNumber: number): boolean {
+    return this.results.some(result => result.index + 1 === questionNumber);
   }
 
-  resetQuiz() {
-    this.results = [];
-    this.correctCount = 0;
-    this.totalQuestions = 0;
-    this.currentSectionIndex = 0;
-    this.currentQuestionIndex = 0;
-    this.updateQuestionNumbers();
-    this.showReview = false;
+  navigateToQuestion(questionNumber: number) {
+    this.currentQuestionIndex = questionNumber - 1;
   }
-   get correctPercentage() {
-    return this.correctCount / this.getCurrentSection().questions.length * 100;
-  }
-  isAnswered(number: number) {
-    return this.results.some(result => result.index === (number - 1));
+
+  get correctPercentage() {
+    return (this.correctCount / this.getCurrentSection().questions.length) * 100;
   }
 }

@@ -68,8 +68,9 @@
       <p>{{ feedback }}</p>
     </div>
 
+
     <!-- Show score summary after quiz completion -->
-    <div *ngIf="showReview" class="score-summary">
+    <div *ngIf="showReview && !(currentQuestionIndex + 1 === 25)" class="score-summary">
       <h3>Quiz Results</h3>
       <p>Total Questions: {{ totalQuestions }}</p>
       <p>Correct Answers: {{ correctCount }}</p>
@@ -97,21 +98,15 @@
         </div>
       </div>
 
-
     <!-- Display Previous Scores -->
     <div class="previous-scores">
       <h3>Previous Scores</h3>
       <ul>
         <li *ngFor="let score of previousScores">
-          <strong>Section:</strong> {{ score.sectionTitle }}<br>
-          <strong>Correct Answers:</strong> {{ score.correctCount }}<br>
-          <strong>Total Questions:</strong> {{ score.totalQuestions }}<br>
           <strong>Score:</strong> {{ (score.correctCount / score.totalQuestions * 100) | number: '1.0-2' }}%<br>
           <strong>Date:</strong> {{ score.date | date: 'short' }}
         </li>
       </ul>
     </div>
   </div>
-
-  </div>
-
+</div>
