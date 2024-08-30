@@ -8,10 +8,10 @@ import { Question } from './quiz-questions.model'; // Ensure the path is correct
 import { JAVASCRIPT_DATA_TYPES_VARIABLES_OPERATORS_COMPARISONS_CONDITIONALS_FLOWS_LOOPS } from '../quiz-questions/JAVASCRIPT/javascript-data-types-variables-operators-comparisons-conditionals-flows-loops-questions';
 import { TYPESCRIPT_INTRODUCTION_QUESTIONS } from '../quiz-questions/ANGULAR/typescript-introduction-questions';
 import { JAVASCRIPT_ADVANCED_CONCEPTS_QUESTIONS } from '../quiz-questions/JAVASCRIPT/javascript-advanced-concepts';
-import { JAVASCRIPT_ESSENTIAL_CONCEPTS_SCOPE_HOISTING_JAVASCRIPTVSECMASCRIPT_QUESTIONS } from '../quiz-questions/JAVASCRIPT/javascript-essential-concepts-scope-hoisting-javascript-vs-ecmascript-questions';
-import { JAVASCRIPT_FUNCTIONS_OBJECTS_BUILTIN_OBJECTS } from '../quiz-questions/JAVASCRIPT/javascript-functions-objects-built-in-objects-questions';
-import { JAVASCRIPT_INTERMEDIATE_CONCEPTS_QUESTIONS } from '../quiz-questions/JAVASCRIPT/javascript-intermediate-concepts-questions';
-import { JAVASCRIPT_BOOKMARKING_APP_QUESTIONS } from '../quiz-questions/JAVASCRIPT/javascript-bookmarking-app-questions';
+import { JAVASCRIPT_BOOKMARKING_APP_QUESTIONS } from '../quiz-questions/JAVASCRIPT/javascripts-bookmarking-app';
+import { JAVASCRIPT_FUNCTIONS_OBJECTS_BUILTIN_OBJECTS } from '../quiz-questions/JAVASCRIPT/javascript-functions-objects-built-in-objects';
+import { JAVASCRIPT_INTERMEDIATE_CONCEPTS_QUESTIONS } from '../quiz-questions/JAVASCRIPT/javascript-intermediate-concepts';
+import { JAVASCRIPT_BUILDING_REAL_THINGS_QUESTIONS } from '../quiz-questions/JAVASCRIPT/javascript-building-real-things';
 
 import { ANGULAR_GETTING_STARTED_QUESTIONS } from '../quiz-questions/ANGULAR/angular-getting-started-questions';
 import { ANGULAR_PROJECT_BASICS_QUESTIONS } from '../quiz-questions/ANGULAR/angular-project-basics-questions';
@@ -60,7 +60,7 @@ export class LessonQuizComponent {
         ...JAVASCRIPT_ADVANCED_CONCEPTS_QUESTIONS,
         ...JAVASCRIPT_BUILDING_REAL_THINGS_QUESTIONS,
         ...JAVASCRIPT_DATA_TYPES_VARIABLES_OPERATORS_COMPARISONS_CONDITIONALS_FLOWS_LOOPS,
-        ...JAVASCRIPT_ESSENTIAL_CONCEPTS_SCOPE_HOISTING_JAVASCRIPTVSECMASCRIPT_QUESTIONS,
+        ...JAVASCRIPT_DATA_TYPES_VARIABLES_OPERATORS_COMPARISONS_CONDITIONALS_FLOWS_LOOPS,
         ...JAVASCRIPT_FUNCTIONS_OBJECTS_BUILTIN_OBJECTS,
         ...JAVASCRIPT_INTERMEDIATE_CONCEPTS_QUESTIONS,
         ...JAVASCRIPT_BOOKMARKING_APP_QUESTIONS   ]},
