@@ -1,4 +1,4 @@
-export const INTERMEDIATE_CONCEPTS_QUESTIONS = [
+export const JAVASCRIPT_INTERMEDIATE_CONCEPTS_QUESTIONS = [
   { id: 1, question: 'What does the "this" keyword refer to in the global scope?', options: ['The global object', 'The current function', 'The object calling the function', 'None of the above'], answer: 'The global object' },
   { id: 2, question: 'True or False: The "this" keyword in a regular function refers to the object that owns the function.', options: [], answer: 'True' },
   { id: 3, question: 'What will the "this" keyword refer to when used inside an arrow function?', options: ['The object that owns the function', 'The global object', 'The enclosing execution context', 'None of the above'], answer: 'The enclosing execution context' },

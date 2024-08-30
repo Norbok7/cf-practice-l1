@@ -1,4 +1,4 @@
-export const BOOKMARKING_APP_QUESTIONS = [
+export const JAVASCRIPT_BOOKMARKING_APP_QUESTIONS = [
   { id: 1, question: 'What purpose does the overlay serve in the Bookmarking App?', options: ['To display a form input', 'To enhance visual focus on the input', 'To store user links', 'To fetch data from an API'], answer: 'To enhance visual focus on the input' },
   { id: 2, question: 'What CSS property is used to ensure the overlay covers the entire viewport?', options: ['position', 'width', 'height', 'opacity'], answer: 'height' },
   { id: 3, question: 'In the `./app.js` file, which event is used to trigger the `focusInput` function?', options: ['focus', 'focusin', 'submit', 'click'], answer: 'focusin' },

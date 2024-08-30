@@ -1,4 +1,4 @@
-export const JAVASCRIPTS_ESSENTIAL_CONCEPTS_SCOPE_HOISTING_JAVASCRIPTVSECMASCRIPT_QUESTIONS = [
+export const JAVASCRIPT_ESSENTIAL_CONCEPTS_SCOPE_HOISTING_JAVASCRIPTVSECMASCRIPT_QUESTIONS = [
   { id: 1, question: 'What is the result of `console.log(typeof null)`?', options: ['"object"', '"null"', '"undefined"', '"string"'], answer: '"object"' },
   { id: 2, question: 'Which of the following variables will not be hoisted?', options: ['`var`', '`let`', '`const`', '`function`'], answer: '`let`' },
   { id: 3, question: 'What will `console.log(x)` output if `var x = 5;` is declared after the `console.log(x)`?', options: ['`undefined`', '`5`', '`ReferenceError`', '`null`'], answer: '`undefined`' },

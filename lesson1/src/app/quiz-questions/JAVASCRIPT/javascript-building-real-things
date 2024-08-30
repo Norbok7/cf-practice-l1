@@ -1,4 +1,4 @@
-export const BUILDING_REAL_THINGS_QUESTIONS = [
+export const JAVASCRIPT_BUILDING_REAL_THINGS_QUESTIONS = [
   { id: 1, question: 'What lifecycle hook in Angular is ideal for initializing data that depends on the input properties of a component?', options: ['ngOnInit', 'ngAfterViewInit', 'ngAfterContentInit', 'ngOnChanges'], answer: 'ngOnInit' },
   { id: 2, question: 'In Angular, which decorator is used to define a directive?', options: ['@Component', '@Directive', '@Pipe', '@Injectable'], answer: '@Directive' },
   { id: 3, question: 'What is the role of the `ChangeDetectorRef` service in Angular?', options: ['To manually trigger change detection', 'To handle HTTP requests', 'To define routes', 'To manage component styling'], answer: 'To manually trigger change detection' },

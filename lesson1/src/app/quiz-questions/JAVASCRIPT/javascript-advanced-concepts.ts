@@ -1,4 +1,4 @@
-export const ADVANCED_CONCEPTS_QUESTIONS = [
+export const JAVASCRIPT_ADVANCED_CONCEPTS_QUESTIONS = [
   // Design Patterns
   { id: 1, question: 'Design patterns are best practices for solving common problems in software engineering. (True/False)', options: [], answer: 'True' },
   { id: 2, question: 'The Builder Design Pattern is a creational pattern used to construct complex objects. (True/False)', options: [], answer: 'True' },
