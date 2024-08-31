@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, NgModule, ViewChild } from '@angular/core';
+import { Component, ViewChild} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { LessonTimerComponent } from '../lesson-timer/lesson-timer.component';
 import { Question } from './quiz-questions.model'; // Ensure the path is correct
-import { QuizresultService } from '../quizresult.service';
+
 // Importing questions from different files
 import { JAVASCRIPT_DATA_TYPES_VARIABLES_OPERATORS_COMPARISONS_CONDITIONALS_FLOWS_LOOPS } from '../quiz-questions/JAVASCRIPT/javascript-data-types-variables-operators-comparisons-conditionals-flows-loops-questions';
 import { TYPESCRIPT_INTRODUCTION_QUESTIONS } from '../quiz-questions/ANGULAR/typescript-introduction-questions';
@@ -83,6 +83,8 @@ export class LessonQuizComponent {
   answers = {}; // Object to store answers, e.g., {1: 'True', 2: 'False'}
   selectedQuizTitle: string = '';
 
+  @ViewChild(LessonTimerComponent) timerComponent!: LessonTimerComponent;
+
   constructor() {
     this.previousScores = JSON.parse(localStorage.getItem('previousScores') || '[]');
   }
@@ -108,6 +110,8 @@ export class LessonQuizComponent {
     this.questionNumbers = Array.from({ length: this.totalQuestions }, (_, i) => i + 1);
     this.selectedQuizTitle = this.getCurrentSection().title;
 
+    // Reset the timer
+    this.resetTimer();
   }
 
   submitAnswer() {
@@ -130,6 +134,8 @@ export class LessonQuizComponent {
 
       if (this.currentQuestionIndex < 24) {
         this.currentQuestionIndex++;
+        // Reset the timer for the next question
+        this.resetTimer();
       } else {
         this.showReview = true;
         this.saveScore();
@@ -160,9 +166,24 @@ export class LessonQuizComponent {
 
   navigateToQuestion(questionNumber: number) {
     this.currentQuestionIndex = questionNumber - 1;
+    this.resetTimer(); // Reset the timer when navigating to a specific question
+  }
+
+  handleTimerExpiry() {
+    // Handle the logic for when the timer expires, such as submitting the answer or showing a message
+    if (!this.showReview) {
+      this.submitAnswer(); // Automatically submit the answer when time expires
+    }
+  }
+
+  resetTimer() {
+    if (this.timerComponent) {
+      this.timerComponent.resetTimer(); // Reset the timer component
+    }
   }
 
   get correctPercentage() {
     return (this.correctCount / this.getCurrentSection().questions.length) * 100;
   }
+
 }

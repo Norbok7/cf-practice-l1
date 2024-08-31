@@ -1,4 +1,4 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, Output, EventEmitter } from '@angular/core';
 import { Subscription, interval } from 'rxjs';
 
 @Component({
@@ -10,6 +10,7 @@ import { Subscription, interval } from 'rxjs';
 })
 export class LessonTimerComponent implements OnInit, OnDestroy {
   @Input() timeLimit: number = 30; // Time limit in seconds
+  @Output() timerExpired = new EventEmitter<void>(); // Emit event when timer expires
   timeRemaining: number = this.timeLimit;
   timerSubscription!: Subscription;
 
@@ -23,7 +24,7 @@ export class LessonTimerComponent implements OnInit, OnDestroy {
         this.timeRemaining--;
       } else {
         this.timerSubscription.unsubscribe();
-        // Handle timer expiration
+        this.timerExpired.emit(); // Notify parent component that timer expired
       }
     });
   }

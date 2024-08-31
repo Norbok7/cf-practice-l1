@@ -40,7 +40,7 @@
   <div class="quiz-section">
     <!-- Display current question -->
     <div *ngIf="currentQuestionIndex < getCurrentSection().questions.length">
-      <app-lesson-timer [timeLimit]="30"></app-lesson-timer>
+      <app-lesson-timer [timeLimit]="30" (timerExpired)="handleTimerExpiry()"></app-lesson-timer>
       <h2>{{ selectedQuizTitle }}</h2>
       <h3>Question {{ currentQuestionIndex + 1 }}</h3>
       <p>{{ getCurrentSection().questions[currentQuestionIndex].question }}</p>
