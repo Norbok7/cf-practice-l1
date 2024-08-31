@@ -19,7 +19,7 @@
   cursor: pointer;
   padding: 10px;
   background: linear-gradient(115deg, #14532d, #15803d 73%, #166534); /* Gradient background */
-  color: black; /* Example: #fff */
+  color: var(--text-color); /* Example: #fff */
   border-radius: 5px;
   text-align: center;
   font-weight: bold;

@@ -124,7 +124,7 @@
   font-size: 1em;
   cursor: pointer;
   border-radius: 5px;
-  color: black; /* Ensure text color is set */
+  color: var(--text-color); /* Example: #fff */
   transition: background 0.3s, transform 0.3s, box-shadow 0.3s; /* Smooth transitions */
 }
 
