@@ -56,7 +56,7 @@
 .close-all-button {
   cursor: pointer;
   padding: 5px 10px;
-  background-color: var(--button-bg); /* Example: #555 */
+  background: rgba(255, 0, 0, 0.635); /* Gradient background */
   color: var(--text-color); /* Example: #fff */
   border: none;
   border-radius: 5px;
@@ -69,7 +69,7 @@
 }
 
 .close-all-button:hover {
-  background-color: var(--button-hover-bg); /* Example: #666 */
+  background: linear-gradient(red); /* Gradient background */
 }
 
 @media (max-width: 480px) {
