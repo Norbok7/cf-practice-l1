@@ -1,3 +1,9 @@
 <div class="timer">
   <p>Time Remaining: {{ timeRemaining }} seconds</p>
+  <div class="progress-bar">
+    <div
+      class="progress"
+      [ngStyle]="{'width': (timeRemaining / timeLimit * 100) + '%', 'background': getProgressBarBackground()}">
+    </div>
+  </div>
 </div>

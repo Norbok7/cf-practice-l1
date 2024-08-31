@@ -1,11 +1,25 @@
-/* Dark theme for timer component */
 .timer {
   font-size: 1.5em;
-  color: #ff0000;
+  color: #fff;
   text-align: center;
   margin: 20px 0;
-  background-color: var(--primary-color);
   padding: 10px;
   border-radius: 8px;
-  border: 1px solid var(--border-color);
+  background: none;
+  border: 1px solid #ffffff33;
+}
+
+.progress-bar {
+  background-color: rgba(0, 0, 0, 0.1); /* Lighter background for the progress bar */
+  border-radius: 8px;
+  height: 20px;
+  margin-bottom: 10px;
+  position: relative;
+  width: 100%;
+}
+
+.progress {
+  height: 100%;
+  border-radius: 8px;
+  transition: width 1s linear;
 }

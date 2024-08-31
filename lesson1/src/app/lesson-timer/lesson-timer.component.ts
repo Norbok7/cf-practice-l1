@@ -1,10 +1,11 @@
+import { CommonModule } from '@angular/common';
 import { Component, Input, OnDestroy, OnInit, Output, EventEmitter } from '@angular/core';
 import { Subscription, interval } from 'rxjs';
 
 @Component({
   selector: 'app-lesson-timer',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './lesson-timer.component.html',
   styleUrl: './lesson-timer.component.css'
 })
@@ -41,5 +42,11 @@ export class LessonTimerComponent implements OnInit, OnDestroy {
     if (this.timerSubscription) {
       this.timerSubscription.unsubscribe();
     }
+  }
+
+  getProgressBarBackground(): string {
+    return this.timeRemaining <= 10
+      ? 'linear-gradient(115deg, #ff0000, #ff5e5e 73%, #ff0000)' // Red gradient
+      : 'linear-gradient(115deg, #166534, #15803d 73%, #14532d)'; // Original gradient
   }
 }
