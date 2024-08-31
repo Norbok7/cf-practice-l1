@@ -1,1 +1,4 @@
-export const environment = { production: true, apiUrl: 'https://api.example.com' };
+export const environment = {
+  production: true,
+  apiUrl: 'https://cfquizzes.web.app',
+};
