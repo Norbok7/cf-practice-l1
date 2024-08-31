@@ -2,7 +2,7 @@
   font-size: 1.5em;
   color: #fff;
   text-align: center;
-  margin: 20px 0;
+  margin: 0;
   padding: 10px;
   border-radius: 8px;
   background: none;
@@ -18,9 +18,9 @@
   width: 100%;
   overflow: hidden; /* Ensure progress doesn't overflow */
 }
-
 .progress {
   height: 100%;
   border-radius: 8px;
-  transition: width 0.75s ease-in; /* Change to 0.75s for smooth fill effect */
+  transition: width 0.5s linear; /* Smooth width transition */
 }
+
