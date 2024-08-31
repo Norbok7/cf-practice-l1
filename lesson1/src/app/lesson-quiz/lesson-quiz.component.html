@@ -78,9 +78,9 @@
       <p>Score: {{ correctPercentage | number: '1.0-2' }}%</p>
       <ul>
         <li *ngFor="let result of results">
-          <strong style="color: black;">Question {{ result.index + 1 }}:</strong> {{ result.question }}<br>
-          Your Answer: {{ result.selectedOption }}<br>
-          Correct Answer: {{ result.correctAnswer }}<br>
+          <strong style="color: black;">Question {{ result.index + 1 }}:</strong> <strong style="color: blue">{{ result.question }}</strong><br>
+          <strong style="color: black;">Your Answer: {{ result.selectedOption }}</strong><br>
+          <strong style="color: black;">Correct Answer: {{ result.correctAnswer }}</strong><br>
           <span [ngClass]="{'correct': result.isCorrect, 'incorrect': !result.isCorrect}">
             {{ result.isCorrect ? 'Correct' : 'Incorrect' }}
           </span>
