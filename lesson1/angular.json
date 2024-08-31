@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-             "baseHref": "/cf-practice-l1/",
+            "baseHref": "/cf-practice-l1/",
             "outputPath": "dist/lesson1",
             "index": "src/index.html",
             "browser": "src/main.ts",
