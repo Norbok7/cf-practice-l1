@@ -142,11 +142,11 @@
 }
 
 .correct {
-  color: rgb(65, 154, 47);
+  color: #56894c;
 }
 
 .incorrect {
-  color: red;
+  color: rgb(165, 27, 27);
 }
 
 
