@@ -16,10 +16,11 @@
   margin-bottom: 10px;
   position: relative;
   width: 100%;
+  overflow: hidden; /* Ensure progress doesn't overflow */
 }
 
 .progress {
   height: 100%;
   border-radius: 8px;
-  transition: width 1s linear;
+  transition: width 0.75s ease-in; /* Change to 0.75s for smooth fill effect */
 }

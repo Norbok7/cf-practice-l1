@@ -3,7 +3,7 @@
   <div class="progress-bar">
     <div
       class="progress"
-      [ngStyle]="{'width': (timeRemaining / timeLimit * 100) + '%', 'background': getProgressBarBackground()}">
+      [ngStyle]="{'width': progressWidth + '%', 'background': getProgressBarBackground()}">
     </div>
   </div>
 </div>

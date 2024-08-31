@@ -13,6 +13,7 @@ export class LessonTimerComponent implements OnInit, OnDestroy {
   @Input() timeLimit: number = 30; // Time limit in seconds
   @Output() timerExpired = new EventEmitter<void>(); // Emit event when timer expires
   timeRemaining: number = this.timeLimit;
+  progressWidth: number = 100; // Initialize progress width to full
   timerSubscription!: Subscription;
 
   ngOnInit() {
@@ -46,7 +47,24 @@ export class LessonTimerComponent implements OnInit, OnDestroy {
 
   getProgressBarBackground(): string {
     return this.timeRemaining <= 10
-      ? 'linear-gradient(115deg, #ff0000, #ff5e5e 73%, #ff0000)' // Red gradient
+      ? 'linear-gradient(115deg, rgba(255, 0, 0, 0.25), rgba(255, 94, 94, 0.25) 73%, rgba(255, 0, 0, 0.25))' // Updated red gradient with 25% opacity
       : 'linear-gradient(115deg, #166534, #15803d 73%, #14532d)'; // Original gradient
+  }
+
+  updateProgress() {
+    this.progressWidth = (this.timeRemaining / this.timeLimit) * 100;
+  }
+
+  // Call this method when a new question is presented
+  handleNewQuestion() {
+    this.animateProgressBar();
+    this.resetTimer();
+  }
+
+  private animateProgressBar() {
+    this.progressWidth = 0; // Start with empty progress
+    setTimeout(() => {
+      this.progressWidth = 100; // Fill the progress bar
+    }, 0); // Start animation immediately
   }
 }
