@@ -79,8 +79,8 @@
       <ul>
         <li *ngFor="let result of results">
           <strong style="color: black;">Question {{ result.index + 1 }}:</strong> <strong style="color: blue">{{ result.question }}</strong><br>
-          <strong style="color: black;">Your Answer: {{ result.selectedOption }}</strong><br>
-          <strong style="color: black;">Correct Answer: {{ result.correctAnswer }}</strong><br>
+          <strong style="color: black;">Your Answer: </strong>{{ result.selectedOption }}<br>
+          <strong style="color: black;">Correct Answer:</strong> {{ result.correctAnswer }}<br>
           <span [ngClass]="{'correct': result.isCorrect, 'incorrect': !result.isCorrect}">
             {{ result.isCorrect ? 'Correct' : 'Incorrect' }}
           </span>
