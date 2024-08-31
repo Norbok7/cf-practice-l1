@@ -6,7 +6,6 @@
   padding: 10px;
   border-bottom: 1px solid var(--border-color); /* Example: #444 */
 }
-
 .topic-container {
   display: flex;
   flex-direction: column;
@@ -15,7 +14,7 @@
 }
 
 .topic-title {
-  height: 40px;
+  height: 15px;
   cursor: pointer;
   padding: 10px;
   background: linear-gradient(115deg, #14532d, #15803d 73%, #166534); /* Gradient background */

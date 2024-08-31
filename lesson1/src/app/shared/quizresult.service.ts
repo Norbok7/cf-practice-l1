@@ -59,4 +59,12 @@ export class QuizresultService {
     console.log('Adding previous score:', score); // Debugging
     this.addPreviousScore(score); // Correct this method call
   }
+  private saveScoresToLocalStorage(scores: any[]) {
+    localStorage.setItem('previousScores', JSON.stringify(scores));
+  }
+
+  private loadScoresFromLocalStorage(): any[] {
+    const scores = localStorage.getItem('previousScores');
+    return scores ? JSON.parse(scores) : [];
+  }
 }

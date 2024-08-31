@@ -170,8 +170,26 @@ li {
 .previous-scores ul {
   list-style-type: none;
   padding: 0;
+  font-size: 12px;
 }
 
 .previous-scores li {
-  margin-bottom: 10px;
+  margin-bottom: 5px;
+}
+
+.previous-scores-button {
+  margin: 15%;
+  background: linear-gradient(115deg, #14532d, #15803d 73%, #166534);
+  border: none;
+  border-radius: 5px;
+  font-size: 1em;
+  cursor: pointer;
+  color: var(--text-color);
+  transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+
+.previous-scores-button:hover {
+  background: linear-gradient(115deg, #336237, #64ad7e 73%, #14532d);
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
