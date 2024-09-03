@@ -111,10 +111,14 @@ body {
   text-align: center;
 }
 
-/* .base-color {
-  background-color: var(--primary-color);
-} */
+/* Highlight the current question */
+.current {
+  background-color: #ffffff30; /* White background for the current question */
+  color: #000000; /* Black text color for readability */
+  border: 2px solid, #ffffff4b;; /* Optional: Add a border to make it stand out */
+}
 
+/* Styles for answered questions */
 .answered-correct {
   background-color: #28a745; /* Green for correct answers */
 }
@@ -123,8 +127,11 @@ body {
   background-color: #dc3545; /* Red for incorrect answers */
 }
 
-.current {
-  border: 2px solid #fff; /* Highlight the current question */
+/* Styles for the current question */
+.current-question {
+  background-color: rgba(255, 255, 255, 0.9); /* White background with 90% opacity for the current question */
+  border: 2px solid #14532d; /* Optional border to highlight the current question */
+  color: var(--primary-color); /* Adjust text color if needed */
 }
 
 /* Dark theme for quiz section */
@@ -246,4 +253,13 @@ body {
 .previous-scores .score-title {
   font-weight: bold;
   color: rgb(65, 154, 47);
+}
+
+/* Styles for the score thresholds */
+.above-70 {
+  color: #28a745; /* Green indicating scores above 70% */
+}
+
+.below-70 {
+  color: #dc3545; /* Red indicating scores below 70% */
 }
