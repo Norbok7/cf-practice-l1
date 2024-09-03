@@ -118,7 +118,11 @@ body {
 .answered-incorrect {
   background-color: #dc3545; /* Red for incorrect answers */
 }
-
+.current {
+  background-color: #555; /* Optional: Add a background color if desired */
+  color: #ffffff; /* White text color for the current question */
+  border: 1px solid #444; /* Optional: Add a border to highlight the current question */
+}
 /* Dark theme for quiz section */
 .quiz-section {
   background-color: var(--secondary-color);

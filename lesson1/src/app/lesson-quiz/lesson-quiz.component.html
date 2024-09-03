@@ -98,7 +98,8 @@
            [ngClass]="{
              'base-color': !isAnswered(number),
              'answered-correct': isAnswered(number) && isCorrect(number),
-             'answered-incorrect': isAnswered(number) && !isCorrect(number)
+             'answered-incorrect': isAnswered(number) && !isCorrect(number),
+             'current': number === (currentQuestionIndex + 1)  
            }"
            (click)="navigateToQuestion(number)">
         {{ number }}
