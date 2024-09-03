@@ -111,6 +111,10 @@ body {
   text-align: center;
 }
 
+/* .base-color {
+  background-color: var(--primary-color);
+} */
+
 .answered-correct {
   background-color: #28a745; /* Green for correct answers */
 }
@@ -118,13 +122,11 @@ body {
 .answered-incorrect {
   background-color: #dc3545; /* Red for incorrect answers */
 }
-.above-70 {
-  color: #28a745; /* Or any color indicating completion */
+
+.current {
+  border: 2px solid #fff; /* Highlight the current question */
 }
 
-.below-70 {
-  color: #dc3545; /* Red for scores below 70% */
-}
 /* Dark theme for quiz section */
 .quiz-section {
   background-color: var(--secondary-color);
@@ -207,6 +209,7 @@ body {
   border-radius: 5px;
   color: var(--text-color);
 }
+
 /* Previous scores section styles */
 .previous-scores {
   background-color: var(--secondary-color);
@@ -244,4 +247,3 @@ body {
   font-weight: bold;
   color: rgb(65, 154, 47);
 }
-
