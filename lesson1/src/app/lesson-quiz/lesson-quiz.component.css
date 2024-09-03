@@ -48,11 +48,14 @@ body {
     display: block;
   }
   .dropdown option.above-70 {
-    background-color: green; /* Example color */
+    background-color:  #28a745 !important;
+    color: white !important; /* Ensure text color is visible */
   }
   .dropdown option.below-70 {
-    background-color: red; /* Example color */
+    background-color: #dc3545 !important;
+    color: white !important;
   }
+
 }
 
 
