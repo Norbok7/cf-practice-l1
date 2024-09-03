@@ -74,6 +74,7 @@ export class LessonQuizComponent {
   currentSectionIndex: number = 0;
   currentQuestionIndex: number = 0;
   selectedOption: string | null = null;
+  selectedAnswers: { [key: number]: string } = {};
   feedback: string = '';
   showReview: boolean = false;
   results: { index: number; question: string; selectedOption: string; correctAnswer: string; isCorrect: boolean }[] = [];
@@ -94,6 +95,11 @@ export class LessonQuizComponent {
   getCurrentSection() {
     return this.sections[this.currentSectionIndex];
   }
+
+    // Method to get the current answer or default to an empty string
+    getSelectedAnswer(): string {
+      return this.selectedAnswers[this.currentQuestionIndex] || '';
+    }
 
   changeSection(event: any) {
     this.currentSectionIndex = parseInt(event.target.value, 10);
@@ -119,6 +125,11 @@ export class LessonQuizComponent {
     if (this.selectedOption) {
       const currentQuestion = this.getCurrentSection().questions[this.currentQuestionIndex];
       const isCorrect = this.selectedOption === currentQuestion.answer;
+
+      // Save the selected answer
+      this.selectedAnswers[this.currentQuestionIndex] = this.selectedOption;
+
+      // Update results array with the answer feedback
       this.results.push({
         index: this.currentQuestionIndex,
         question: currentQuestion.question,
@@ -130,10 +141,15 @@ export class LessonQuizComponent {
       if (isCorrect) {
         this.correctCount++;
       }
+
+      // Update feedback message
       this.feedback = isCorrect ? 'Correct!' : 'Incorrect, try again!';
+
+      // Clear selected option
       this.selectedOption = null;
 
-      if (this.currentQuestionIndex < 24) {
+      // Move to the next question or show results
+      if (this.currentQuestionIndex < this.getCurrentSection().questions.length - 1) {
         this.currentQuestionIndex++;
         // Reset the timer for the next question
         this.resetTimer();
@@ -167,6 +183,7 @@ export class LessonQuizComponent {
 
   navigateToQuestion(questionNumber: number) {
     this.currentQuestionIndex = questionNumber - 1;
+    this.selectedOption = this.getSelectedAnswer(); // Update selectedOption to the previously selected answer
     this.resetTimer(); // Reset the timer when navigating to a specific question
   }
 
@@ -186,5 +203,7 @@ export class LessonQuizComponent {
   get correctPercentage() {
     return (this.correctCount / this.getCurrentSection().questions.length) * 100;
   }
+
+  
 
 }

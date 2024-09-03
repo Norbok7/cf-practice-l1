@@ -7,6 +7,7 @@
       <div class="dropdown">
         <label for="quiz-select">Select Quiz:</label>
         <select id="quiz-select" (change)="changeSection($event)">
+          <!-- Options for different quizzes -->
           <option value="0">HTML/CSS + Dev Tools</option>
           <option value="1">Intermediate CSS with Responsive Design</option>
           <option value="2">JavaScript: Data Types & Variables, Operators, Comparisons, Conditionals, Flows, Loops</option>
@@ -104,21 +105,22 @@
       </div>
     </div>
   </div>
-<!-- Display Previous Scores -->
-<div class="previous-scores">
-  <h3>Last 5</h3>
-  <ul>
-    <li *ngFor="let score of previousScores | slice:-10">
-      <div class="score-item">
-        <strong class="score-title">Quiz:</strong> {{ score.sectionTitle }}
-      </div>
-      <div class="score-item">
-        <strong class="score-title">Score:</strong> {{ (score.correctCount / score.totalQuestions * 100) | number: '1.0-2' }}%
-      </div>
-      <div class="score-item">
-        <strong class="score-title">Date:</strong> {{ score.date | date: 'short' }}
-      </div>
-    </li>
-  </ul>
-</div>
 
+  <!-- Display Previous Scores -->
+  <div class="previous-scores">
+    <h3>Previous 10</h3>
+    <ul>
+      <li *ngFor="let score of previousScores | slice:-10">
+        <div class="score-item">
+          <strong class="score-title">Quiz:</strong> {{ score.sectionTitle }}
+        </div>
+        <div class="score-item">
+          <strong class="score-title">Score:</strong> {{ (score.correctCount / score.totalQuestions * 100) | number: '1.0-2' }}%
+        </div>
+        <div class="score-item">
+          <strong class="score-title">Date:</strong> {{ score.date | date: 'short' }}
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
