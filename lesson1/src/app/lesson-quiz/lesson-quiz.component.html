@@ -7,7 +7,11 @@
       <div class="dropdown">
         <label for="quiz-select">Select Quiz:</label>
         <select id="quiz-select" (change)="changeSection($event)">
-          <!-- Options for different quizzes -->
+          <option *ngFor="let section of sections"
+          [value]="sections.indexOf(section)"
+          [ngClass]="getQuizStatus(section.title)">
+    {{ section.title }}
+  </option>
           <option value="0">HTML/CSS + Dev Tools</option>
           <option value="1">Intermediate CSS with Responsive Design</option>
           <option value="2">JavaScript: Data Types & Variables, Operators, Comparisons, Conditionals, Flows, Loops</option>
@@ -99,7 +103,7 @@
              'base-color': !isAnswered(number),
              'answered-correct': isAnswered(number) && isCorrect(number),
              'answered-incorrect': isAnswered(number) && !isCorrect(number),
-             'current': number === (currentQuestionIndex + 1)  
+             'current': number === (currentQuestionIndex + 1)
            }"
            (click)="navigateToQuestion(number)">
         {{ number }}

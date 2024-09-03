@@ -187,6 +187,19 @@ export class LessonQuizComponent {
     this.resetTimer(); // Reset the timer when navigating to a specific question
   }
 
+  getQuizStatus(quizTitle: string): string {
+    const score = this.previousScores.find(score => score.sectionTitle === quizTitle);
+    if (score) {
+      const percentage = (score.correctCount / score.totalQuestions) * 100;
+      if (percentage > 70) {
+        return 'completed';
+      } else if (percentage < 70) {
+        return 'below-70';
+      }
+    }
+    return '';
+  }
+
   handleTimerExpiry() {
     // Handle the logic for when the timer expires, such as submitting the answer or showing a message
     if (!this.showReview) {
@@ -204,6 +217,6 @@ export class LessonQuizComponent {
     return (this.correctCount / this.getCurrentSection().questions.length) * 100;
   }
 
-  
+
 
 }
