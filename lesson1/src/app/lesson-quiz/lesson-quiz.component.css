@@ -47,7 +47,14 @@ body {
     width: auto;
     display: block;
   }
+  .dropdown option.above-70 {
+    background-color: green; /* Example color */
+  }
+  .dropdown option.below-70 {
+    background-color: red; /* Example color */
+  }
 }
+
 
 /* Section selector box styles */
 .section-selector-box {
