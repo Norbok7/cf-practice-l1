@@ -186,6 +186,7 @@ body {
   background-color: var(--button-hover-bg);
 }
 
+
 /* Score summary styles */
 .score-summary {
   background-color: var(--secondary-color);

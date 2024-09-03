@@ -8,34 +8,10 @@
         <label for="quiz-select">Select Quiz:</label>
         <select id="quiz-select" (change)="changeSection($event)">
           <option *ngFor="let section of sections"
-          [value]="sections.indexOf(section)"
-          [ngClass]="getQuizStatus(section.title)">
-    {{ section.title }}
+                  [value]="sections.indexOf(section)"
+                  [ngClass]="getQuizStatus(section.title)">
+            {{ section.title }}
   </option>
-          <option value="0">HTML/CSS + Dev Tools</option>
-          <option value="1">Intermediate CSS with Responsive Design</option>
-          <option value="2">JavaScript: Data Types & Variables, Operators, Comparisons, Conditionals, Flows, Loops</option>
-          <option value="3">JavaScript: Functions, Objects, Built-in Objects</option>
-          <option value="4">JavaScript: Scope, Hoisting, JavaScript vs EcmaScript</option>
-          <option value="5">JavaScript Intermediate Concepts</option>
-          <option value="6">JavaScript Advanced Concepts</option>
-          <option value="7">JavaScript: Building Real Things</option>
-          <option value="8">JavaScript: Bookmarking App</option>
-          <option value="9">TypeScript: Introduction</option>
-          <option value="10">Angular: Completing Getting Started</option>
-          <option value="11">Angular: The Basics, Debugging</option>
-          <option value="12">Angular: Components & Databinding deep dive</option>
-          <option value="13">Angular: Directives deep dive</option>
-          <option value="14">Angular: Routing & Observables</option>
-          <option value="15">Angular: Asynchronous Concepts</option>
-          <option value="16">Angular: Handling forms in Angular apps</option>
-          <option value="17">Angular: Forms & Pipes</option>
-          <option value="18">Angular: Making HTTP requests</option>
-          <option value="19">Angular: Authentication & Route Protection</option>
-          <option value="20">Angular: Dynamic Components, Modules & Optimizations</option>
-          <option value="21">Angular: Animations, Service Workers & Deployment</option>
-          <option value="22">Angular: Unit Testing</option>
-          <option value="23">GitHub Version Control</option>
         </select>
       </div>
     </div>
