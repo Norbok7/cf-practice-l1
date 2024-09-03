@@ -7,7 +7,7 @@ import { LessonTimerComponent } from './lesson-timer/lesson-timer.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, LessonBarComponent, LessonQuizComponent, LessonTimerComponent],
+  imports: [RouterOutlet, LessonBarComponent, LessonQuizComponent, LessonTimerComponent, ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

@@ -1,26 +1,57 @@
 .timer {
-  font-size: 1.5em;
-  color: #fff;
+  font-size: 1.2em; /* Adjusted font size for better readability */
+  color: var(--text-color);
   text-align: center;
-  margin: 0;
+  margin: 0 auto; /* Center the timer */
   padding: 10px;
   border-radius: 8px;
-  background: none;
-  border: 1px solid #ffffff33;
+  background: var(--primary-color); /* Consistent background color */
+  border: 1px solid var(--border-color);
+  width: 100%; /* Full width on mobile */
+  max-width: 400px; /* Max width for larger screens */
+}
+
+.timer-text {
+  margin: 0;
+  padding: 5px 0;
+  font-weight: bold;
 }
 
 .progress-bar {
   background-color: rgba(0, 0, 0, 0.1); /* Lighter background for the progress bar */
   border-radius: 8px;
   height: 20px;
-  margin-bottom: 10px;
+  margin-top: 10px; /* Adjusted margin for better spacing */
   position: relative;
   width: 100%;
   overflow: hidden; /* Ensure progress doesn't overflow */
 }
+
 .progress {
   height: 100%;
   border-radius: 8px;
   transition: width 0.5s linear; /* Smooth width transition */
 }
 
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .timer {
+    font-size: 1em; /* Adjust font size for smaller screens */
+    padding: 8px;
+  }
+
+  .progress-bar {
+    height: 15px; /* Adjust progress bar height for better fit */
+  }
+}
+
+@media (max-width: 480px) {
+  .timer {
+    font-size: 0.9em; /* Further adjust font size for very small screens */
+    padding: 5px;
+  }
+
+  .progress-bar {
+    height: 12px; /* Further adjust progress bar height */
+  }
+}

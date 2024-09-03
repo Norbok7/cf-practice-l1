@@ -7,18 +7,46 @@
   --button-hover-bg: #555; /* Button background hover color */
 }
 
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
 /* Dark theme for quiz container */
 .quiz-container {
   display: grid;
   grid-template-columns: 1fr 3fr 1fr; /* 3 columns: selector, quiz, navigation */
-  gap: 20px; /* Space between columns */
+  gap: 20px;
   background-color: var(--primary-color);
   color: var(--text-color);
   border: 1px solid var(--border-color);
   border-radius: 8px;
   padding: 20px;
   max-width: 1200px;
-  margin: auto;
+  margin: 20px auto; /* Centered in the page */
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .quiz-container {
+    grid-template-columns: 1fr; /* Single column layout */
+    gap: 10px;
+  }
+
+  .section-selector-box, .quiz-section, .navigation-box, .previous-scores {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .quiz-section, .navigation-box, .previous-scores {
+    margin-top: 10px;
+  }
+
+  .previous-scores-button {
+    margin: 5% auto;
+    width: auto;
+    display: block;
+  }
 }
 
 /* Section selector box styles */
@@ -71,7 +99,7 @@
 }
 
 .question-numbers div {
-  width: 30px; /* Adjust size as needed */
+  width: 30px;
   height: 30px;
   margin: 5px;
   display: flex;
@@ -107,89 +135,107 @@
   color: var(--text-color);
 }
 
-.quiz-section p {
+.quiz-section h3 {
   font-size: 1.2em;
   color: var(--text-color);
 }
 
+.quiz-section p {
+  font-size: 1em;
+  line-height: 1.5;
+  color: var(--text-color);
+}
+
+/* Styles for multiple-choice and true/false options */
 .quiz-section label {
   display: block;
-  margin: 10px 0;
+  padding: 10px;
+  margin-bottom: 5px;
+  background-color: var(--primary-color);
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 .quiz-section button {
-  background: linear-gradient(115deg, #14532d, #15803d 73%, #166534); /* Gradient background */
-  border: none;
   padding: 10px 20px;
-  font-size: 1em;
-  cursor: pointer;
+  background-color: var(--button-bg);
+  color: var(--text-color);
+  border: none;
   border-radius: 5px;
-  color: var(--text-color); /* Example: #fff */
-  transition: background 0.3s, transform 0.3s, box-shadow 0.3s; /* Smooth transitions */
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .quiz-section button:hover {
-  background: linear-gradient(115deg, #336237, #64ad7e 73%, #14532d); /* Gradient for hover */
-  transform: scale(1.05); /* Slightly enlarge the button on hover */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add a shadow for depth */
+  background-color: var(--button-hover-bg);
 }
 
+/* Score summary styles */
 .score-summary {
-  margin-top: 20px;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  background-color: var(--secondary-color);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-color);
 }
 
-.correct {
-  color: #56894c;
-}
-
-.incorrect {
-  color: rgb(165, 27, 27);
-}
-
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  margin-bottom: 15px;
+.score-summary h3 {
   color: var(--text-color);
 }
 
-.previous-scores {
-  margin-top: 20px;
+.score-summary p {
+  font-size: 1em;
+  color: var(--text-color);
+}
+
+.score-summary ul {
+  list-style: none;
+  padding: 0;
+}
+
+.score-summary li {
+  background-color: var(--primary-color);
   padding: 10px;
-  border: 1px solid #ddd;
+  margin-bottom: 10px;
   border-radius: 5px;
+  color: var(--text-color);
+}
+/* Previous scores section styles */
+.previous-scores {
+  background-color: var(--secondary-color);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-color);
+}
+
+.previous-scores h3 {
+  color: var(--text-color);
+  margin-bottom: 15px;
+  font-size: 1.5em;
 }
 
 .previous-scores ul {
-  list-style-type: none;
+  list-style: none;
   padding: 0;
-  font-size: 12px;
+  margin: 0;
 }
 
 .previous-scores li {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-color);
+}
+
+.previous-scores .score-item {
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 5px;
 }
 
-.previous-scores-button {
-  margin: 15%;
-  background: linear-gradient(115deg, #14532d, #15803d 73%, #166534);
-  border: none;
-  border-radius: 5px;
-  font-size: 1em;
-  cursor: pointer;
-  color: var(--text-color);
-  transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
+.previous-scores .score-title {
+  font-weight: bold;
+  color: rgb(65, 154, 47);
 }
 
-.previous-scores-button:hover {
-  background: linear-gradient(115deg, #336237, #64ad7e 73%, #14532d);
-  transform: scale(1.05);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}

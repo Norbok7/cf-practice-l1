@@ -34,7 +34,8 @@ import { ANGULAR_ASYNCHRONOUS_CONCEPTS_QUESTIONS } from '../quiz-questions/ANGUL
 @Component({
   selector: 'app-lesson-quiz',
   standalone: true,
-  imports: [CommonModule, FormsModule, LessonTimerComponent, ],
+  imports: [CommonModule, FormsModule, LessonTimerComponent,
+   ],
   templateUrl: './lesson-quiz.component.html',
   styleUrls: ['./lesson-quiz.component.css']
 })

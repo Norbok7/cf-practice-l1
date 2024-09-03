@@ -1,34 +1,55 @@
-/* Dark theme for lesson bar */
+:root {
+  --primary-color: #14532d;
+  --secondary-color: #15803d;
+  --text-color: #ffffff;
+  --border-color: #444;
+  --button-bg: #15803d;
+  --button-hover-bg: #166534;
+  --lesson-bg: #444;
+  --lesson-hover-bg: #555;
+}
+
+.main-title {
+  text-align: center;
+  color: var(--text-color);
+  font-size: 1.8em;
+  margin-bottom: 20px;
+  background-color: var(--primary-color);
+  padding: 10px;
+  border-radius: 8px;
+}
+
 .lesson-bar {
   display: flex;
   flex-wrap: wrap;
-  background-color: var(--primary-color); /* Example: #333 */
+  background-color: var(--primary-color);
   padding: 10px;
-  border-bottom: 1px solid var(--border-color); /* Example: #444 */
+  border-bottom: 1px solid var(--border-color);
+  border-radius: 5px;
 }
+
 .topic-container {
   display: flex;
   flex-direction: column;
-  margin: 0 10px; /* Space between topics */
-  flex: 1 1 200px; /* Allow topics to grow and shrink */
+  margin: 10px;
+  flex: 1 1 200px; /* Responsive size adjustment */
 }
 
 .topic-title {
-  height: 15px;
   cursor: pointer;
   padding: 10px;
   background: linear-gradient(115deg, #14532d, #15803d 73%, #166534); /* Gradient background */
-  color: var(--text-color); /* Example: #fff */
+  color: var(--text-color);
   border-radius: 5px;
   text-align: center;
   font-weight: bold;
-  transition: background 0.3s, transform 0.3s, box-shadow 0.3s; /* Smooth transitions */
+  transition: background 0.3s, transform 0.3s, box-shadow 0.3s;
 }
 
 .topic-title:hover {
   background: linear-gradient(115deg, #166534, #15803d 73%, #14532d); /* Gradient for hover */
-  transform: scale(1.05); /* Slightly enlarge the title on hover */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Add a shadow for depth */
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .lesson-list {
@@ -36,44 +57,63 @@
   padding-left: 10px;
   display: flex;
   flex-direction: column;
+  background-color: var(--secondary-color);
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .lesson-item {
   cursor: pointer;
   margin-top: 5px;
-  padding: 5px;
-  background-color: var(--lesson-bg); /* Example: #444 */
-  color: var(--text-color); /* Example: #fff */
+  padding: 8px;
+  background-color: var(--lesson-bg);
+  color: var(--text-color);
   border-radius: 5px;
   transition: background-color 0.3s;
 }
 
 .lesson-item:hover {
-  background-color: var(--lesson-hover-bg); /* Example: #555 */
+  background-color: var(--lesson-hover-bg);
 }
-/* Style for the master button */
+
 .close-all-button {
   cursor: pointer;
-  padding: 5px 10px;
-  background: rgba(255, 0, 0, 0.635); /* Gradient background */
-  color: var(--text-color); /* Example: #fff */
+  padding: 10px 20px;
+  background: rgba(255, 0, 0, 0.8);
+  color: var(--text-color);
   border: none;
   border-radius: 5px;
-  margin-top: 10px; /* Space above the button */
+  margin-top: 10px;
   font-weight: bold;
   transition: background-color 0.3s;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Subtle shadow for depth */
-  align-self: center; /* Center the button horizontally */
-  display: block; /* Ensure the button is block level */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  align-self: center;
 }
 
 .close-all-button:hover {
-  background: linear-gradient(red); /* Gradient background */
+  background: rgba(200, 0, 0, 0.9);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .lesson-bar {
+    display: none; /* Hide the entire lesson bar component on mobile devices */
+  }
+
+  .topic-container {
+    flex: 1 1 100%;
+    margin: 5px 0;
+  }
+
+  .main-title {
+    font-size: 1.5em;
+    padding: 8px;
+  }
 }
 
 @media (max-width: 480px) {
-  .topic-title {
-    font-size: 10px; /* Adjust font size for smaller screens */
-    padding: 0 3px; /* Adjust horizontal padding */
+  .lesson-bar {
+    display: none; /* Hide the entire lesson bar component on mobile devices */
   }
 }

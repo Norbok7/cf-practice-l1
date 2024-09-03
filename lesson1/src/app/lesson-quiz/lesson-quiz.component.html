@@ -87,37 +87,38 @@
         </li>
       </ul>
     </div>
-    </div>
-    <!-- Navigation Box -->
-    <div class="navigation-box">
-      <h3>Question Navigation</h3>
-      <div class="question-numbers">
-        <div *ngFor="let number of questionNumbers"
-             [ngClass]="{
-               'base-color': !isAnswered(number),
-               'answered-correct': isAnswered(number) && isCorrect(number),
-               'answered-incorrect': isAnswered(number) && !isCorrect(number)
-             }"
-             (click)="navigateToQuestion(number)">
-          {{ number }}
-        </div>
+  </div>
+
+  <!-- Navigation Box -->
+  <div class="navigation-box">
+    <h3>Question Navigation</h3>
+    <div class="question-numbers">
+      <div *ngFor="let number of questionNumbers"
+           [ngClass]="{
+             'base-color': !isAnswered(number),
+             'answered-correct': isAnswered(number) && isCorrect(number),
+             'answered-incorrect': isAnswered(number) && !isCorrect(number)
+           }"
+           (click)="navigateToQuestion(number)">
+        {{ number }}
       </div>
-
-
- <!-- Display Previous Scores -->
+    </div>
+  </div>
+<!-- Display Previous Scores -->
 <div class="previous-scores">
-  <h3>Previous Scores</h3>
+  <h3>Last 5</h3>
   <ul>
-    <li *ngFor="let score of previousScores | slice:-3">
-      <strong style="color: rgb(65, 154, 47);">Quiz</strong> {{ score.sectionTitle }}<br>
-      <strong style="color: rgb(65, 154, 47);">Score:</strong> {{ (score.correctCount / score.totalQuestions * 100) | number: '1.0-2' }}%<br>
-      <strong style="color: rgb(65, 154, 47);">Date:</strong> {{ score.date | date: 'short' }}
+    <li *ngFor="let score of previousScores | slice:-10">
+      <div class="score-item">
+        <strong class="score-title">Quiz:</strong> {{ score.sectionTitle }}
+      </div>
+      <div class="score-item">
+        <strong class="score-title">Score:</strong> {{ (score.correctCount / score.totalQuestions * 100) | number: '1.0-2' }}%
+      </div>
+      <div class="score-item">
+        <strong class="score-title">Date:</strong> {{ score.date | date: 'short' }}
+      </div>
     </li>
   </ul>
-  <button class="previous-scores-button">View All Scores</button>
 </div>
-
-  </div>
-
-  </div>
 
