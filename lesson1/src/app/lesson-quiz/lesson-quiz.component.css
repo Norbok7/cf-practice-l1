@@ -118,12 +118,12 @@ body {
 .answered-incorrect {
   background-color: #dc3545; /* Red for incorrect answers */
 }
-.completed {
-  color: green; /* Or any color indicating completion */
+.above-70 {
+  color: #28a745; /* Or any color indicating completion */
 }
 
 .below-70 {
-  color: red; /* Red for scores below 70% */
+  color: #dc3545; /* Red for scores below 70% */
 }
 /* Dark theme for quiz section */
 .quiz-section {

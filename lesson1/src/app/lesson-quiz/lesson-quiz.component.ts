@@ -169,6 +169,7 @@ export class LessonQuizComponent {
     };
     this.previousScores.push(scoreData);
     localStorage.setItem('previousScores', JSON.stringify(this.previousScores));
+    console.log('Scores saved:', this.previousScores);  // Add this line
   }
 
 
@@ -188,16 +189,17 @@ export class LessonQuizComponent {
   }
 
   getQuizStatus(quizTitle: string): string {
-    const score = this.previousScores.find(score => score.sectionTitle === quizTitle);
-    if (score) {
-      const percentage = (score.correctCount / score.totalQuestions) * 100;
-      if (percentage > 70) {
-        return 'completed';
-      } else if (percentage < 70) {
-        return 'below-70';
-      }
+    const scoresForQuiz = this.previousScores.filter(score => score.sectionTitle === quizTitle);
+    if (scoresForQuiz.length === 0) {
+      return '';
     }
-    return '';
+    const latestScore = scoresForQuiz.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())[0];
+    const percentage = (latestScore.correctCount / latestScore.totalQuestions) * 100;
+    if (percentage > 70) {
+      return 'above-70';
+    } else {
+      return 'below-70';
+    }
   }
 
   handleTimerExpiry() {
